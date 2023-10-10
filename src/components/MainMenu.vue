@@ -31,7 +31,7 @@ nav {
 
 .titleItem{
     color: White;
-    padding: 30px;
+    padding: 25px;
     font-weight: bold;
     font-size: 1.5rem;
     text-align: center;
@@ -42,10 +42,10 @@ nav {
     color: White;
     font-weight: bold;
     font-size: 1rem;
-    padding: 25px;
+    padding: 20px;
 }
 .emptySpace{
-    padding: 30px;
+    padding: 58px;
 }
 
 section {

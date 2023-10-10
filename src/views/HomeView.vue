@@ -1,14 +1,23 @@
 <template>
   <main class="home">
-    <h2>{homePageTitle}</h2>
-      <img id = "middle" src = "require('.\assets\images\logo2.jpg')" alt="HusckyLogo">
+    <div class = "formatText">
+       <h2>{homePageTitle}</h2>
+    </div>
+    <div class = "formatImage">
+      <img src ="../assets/images/logo6.jpg" alt="HusckyLogo" width="550" height="366">
+    </div>
   </main>
 </template>
 
+<script setup>
+  defineProps({
+    homePageTitle: String
+  })
+</script>
+
 <style>
 .home {
-  padding: 0rem;
-  border: 1px solid Black;
+  padding: 0;
   display: flex;
   flex-direction: column;
 }
@@ -16,17 +25,15 @@
 .home h2 {
   text-align: center;
   font-size: 1.5rem;
-  padding: 12.5px;
   background-color: #151E3D;
   color: white;
+  padding: 25px;
 }
 
-#middle{
-  width: 100%;
-  height: 470px;      
-  object-fit: none;  
-  object-position: center; 
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
-
 
 </style>
