@@ -1,29 +1,32 @@
 <template>
   <main class="home">
-    <h2>The Home Page</h2>
-    <p>
-      This application includes this home page, a page that fetches data, and a
-      page that handles state in a form.
-    </p>
-    <p>
-      These pages, along with the structure of the project, are designed to help
-      you get started solving similar technical challenges, based on the
-      features you are looking to add to your application.
-    </p>
+    <h2>{homePageTitle}</h2>
+      <img id = "middle" src = "require('.\assets\images\logo2.jpg')" alt="HusckyLogo">
   </main>
 </template>
 
 <style>
 .home {
-  padding: 1rem;
+  padding: 0rem;
+  border: 1px solid Black;
+  display: flex;
+  flex-direction: column;
 }
 
 .home h2 {
+  text-align: center;
   font-size: 1.5rem;
-  margin-bottom: 2rem;
+  padding: 12.5px;
+  background-color: #151E3D;
+  color: white;
 }
 
-.home p {
-  margin-bottom: 1rem;
+#middle{
+  width: 100%;
+  height: 470px;      
+  object-fit: none;  
+  object-position: center; 
 }
+
+
 </style>
