@@ -41,7 +41,7 @@
 
 <script setup>
 import { ref, computed, watch } from "vue";
-import { monthNames } from "../util/constants";
+
 
 // the three financial security types in our api's dataset
 const securityTypes = ["CMBs", "Bills", "Bonds", "FRNs", "Notes", "TIPS"];

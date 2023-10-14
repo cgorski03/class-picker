@@ -5,6 +5,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import FormView from "../views/FormView.vue";
 import FetchView from "../views/FetchView.vue";
+import LoginPage from '../components/LoginPage.vue';
+import MainMenu from '../components/MainMenu.vue';
 
 const router = createRouter({
   // the history mode determines how vue router interacts with the url.
@@ -15,6 +17,7 @@ const router = createRouter({
   // served by vite, which in this project is always the same directory
   // (and therefore import.meta.env.BASE_URL is '/')
   history: createWebHistory(import.meta.env.BASE_URL),
+  linkActiveClass: 'active',
 
   // each entry to this routes array has a path (what goes in the URL to access
   // this page), a name (check out components/AppHeader.vue for how this is used)
@@ -22,9 +25,19 @@ const router = createRouter({
   routes: [
     {
       path: "/",
+      name: "login",
+      component: LoginPage,
+     },
+    {
+      path: "/home",
       name: "home",
       component: HomeView,
     },
+    {
+      path: "/",
+      name: "mainmenu",
+      component: MainMenu,
+     },
     {
       path: "/form",
       name: "form",

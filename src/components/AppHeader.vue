@@ -7,6 +7,7 @@
 </template>
 
 <style>
+
 /* give the header itself a background color, a border, and add some padding to the content */
 .app-header {
   background-color: White;

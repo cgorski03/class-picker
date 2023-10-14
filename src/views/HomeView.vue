@@ -1,20 +1,38 @@
 <template>
-  <main class="home">
-    <div class = "formatText">
-       <h2>{homePageTitle}</h2>
+  <main>
+    <div class = "menuContent">
+      <MainMenu/>
     </div>
-    <div class = "formatImage">
-      <img src ="../assets/images/logo6.jpg" alt="HusckyLogo" width="550" height="366">
+
+    <div class = "mainContent">
+      <div class="home">
+        <div class = "formatText">
+          <h2>{homePageTitle}</h2>
+        </div>
+        <div class = "formatImage">
+          <!-- Need to fix so it resizes and works on different display -->
+          <img src ="../assets/images/logo6.jpg" alt="HusckyLogo" width="550" height="366">
+        </div>
+      </div>
     </div>
+
   </main>
 </template>
 
-<script setup>
-  defineProps({
-    homePageTitle: String
-  })
-</script>
+<script>
+import MainMenu from "../components/MainMenu.vue";
 
+export default{
+  name: "home",
+  props:{ 
+    homePageTitle: String
+  },
+  components: {
+    MainMenu
+  }
+}
+
+</script>
 <style>
 .home {
   padding: 0;
@@ -34,6 +52,19 @@ img {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.menuContent {  
+  width: 20%;
+}
+
+.mainContent{
+  width: 80%;
+}
+
+main{
+  display: flex;
+  flex-direction:row;  
 }
 
 </style>

@@ -12,9 +12,17 @@
     </nav>  
 </template>
 
-<script setup>
-// import the <RouterLink> component so that we can use it in the template above
+<script>
+// Using router Link to link to different web pages
 import { RouterLink } from "vue-router";
+
+const studentMenuOptions = ["Tutorial", "Add Classes", "Drop Classes", "View Schedule", "Sign Out" ]
+const teacherMenuOptions = ["Tutorial", "View Schedule", "Sign Out"]
+
+export default{
+    
+}
+
 </script>
 
 
