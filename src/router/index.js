@@ -5,8 +5,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import FormView from "../views/FormView.vue";
 import FetchView from "../views/FetchView.vue";
-import LoginPage from '../components/LoginPage.vue';
-import MainMenu from '../components/MainMenu.vue';
+import LoginView from "../views/LoginView.vue";
+import MainMenu from "../components/MainMenu.vue";
 
 const router = createRouter({
   // the history mode determines how vue router interacts with the url.
@@ -26,7 +26,7 @@ const router = createRouter({
     {
       path: "/",
       name: "login",
-      component: LoginPage,
+      component: LoginView,
      },
     {
       path: "/home",
