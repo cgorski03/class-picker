@@ -6,6 +6,7 @@ import HomeView from "../views/HomeView.vue";
 import FormView from "../views/FormView.vue";
 import FetchView from "../views/FetchView.vue";
 import LoginView from "../views/LoginView.vue";
+import WelcomeView from "../views/WelcomeView.vue";
 import MainMenu from "../components/MainMenu.vue";
 
 const router = createRouter({
@@ -25,6 +26,11 @@ const router = createRouter({
   routes: [
     {
       path: "/",
+      name: "welcome",
+      component: WelcomeView,
+     },
+    {
+      path: "/login",
       name: "login",
       component: LoginView,
      },

@@ -5,18 +5,18 @@
     </div>
 
     <div class = "middle">
-      <h2 class = "title">{loginTitle}</h2>
+      <h2 class = "title">{{loginTitle}}</h2>
       <form name="login-form">
 
         <!-- Could add hover to input for clearner look down the road --->
 
         <div>
           <label for="username" class = "upText">Username</label>
-          <input class = "upFormat" type="text" id="username" v-model="input.username" />
+          <input class = "upFormat" type="text" id="username" v-bind="username" />
         </div>
         <div>
           <label for="password" class = "upText">Password</label>
-          <input class = "upFormat" type="password" id="password" v-model="input.password" />
+          <input class = "upFormat" type="password" id="password" v-bind="password" />
         </div>
         <button class="btn" type="submit" v-on:click.prevent="login()">
           Login
@@ -31,40 +31,33 @@
   </main>
 </template>
 
-<script>
-import { SET_AUTHENTICATION, SET_USERNAME } from "../util/storeconstants";
-export default {
-  name: 'LoginPage',
-  props:{
-    loginTitle: String
-  },
-  data() {
-    return {
-      input: {
-        username: "",
-        password: ""
-      },
-      output: "",
+<script setup>
+import store from "../store/auth";
+import versionState from '../state/version';
+import { ref } from 'vue';
+import {useRouter} from 'vue-router';
+
+const router = useRouter();
+
+//Can add a forgot password later on
+const loginTitle = ref(versionState.getLoginTitle);
+
+const prop = defineProps({
+  username:String,
+  password:String,
+})
+
+
+  const login = () => {
+    //make sure username OR password are not empty
+    if (prop.username != "" || prop.username != "") {
+      console.log("Authentication complete");
+      router.push('/home')
+    } 
+    else {
+      alert("Username and password can not be empty");
     }
-  },
-  methods: {
-    login() {
-      //make sure username OR password are not empty
-      if (this.input.username != "" || this.input.username != "") {
-        this.output = "Authentication complete"
-        //stores true to the set_authentication and username to the set_username 
-        this.$store.commit(`auth/${SET_AUTHENTICATION}`, true);
-        this.$store.commit(`auth/${SET_USERNAME}`, this.input.username);
-        this.output = "Authentication complete."
-        this.$router.push('/home')
-      } 
-      else {
-        this.$store.commit(`auth/${SET_AUTHENTICATION}`, false);
-        this.output = "Username and password can not be empty"
-      }
-    },
-  },
-}
+  }
 
 </script>
 
