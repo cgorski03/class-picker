@@ -50,6 +50,8 @@ img {
 
 .menuContent {  
   width: 20%;
+  background-color: #B90E0A;
+  border: 2px black;
 }
 
 .mainContent{
