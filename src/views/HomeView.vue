@@ -7,7 +7,7 @@
     <div class = "mainContent">
       <div class="home">
         <div class = "formatText">
-          <h2>{{homePageTitle}}</h2>
+          <h2>{{versionState.getHomePageTitle.value}}</h2>
         </div>
         <div class = "formatImage">
           <!-- Need to fix so it resizes and works on different display -->
@@ -22,12 +22,9 @@
 <script setup>
 import MainMenu from "../components/MainMenu.vue";
 import versionState from "../state/version";
-import { ref } from 'vue';
-
-let homePageTitle = ref(versionState.getHomePageTitle);
 
 </script>
-<style>
+<style scoped>
 .home {
   padding: 0;
   display: flex;
