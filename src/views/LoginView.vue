@@ -5,7 +5,7 @@
     </div>
 
     <div class = "middle">
-      <h2 class = "title">{{loginTitle}}</h2>
+      <h2 class = "title">{{versionState.getLoginTitle.value}}</h2>
       <form name="login-form">
 
         <!-- Could add hover to input for clearner look down the road --->
@@ -27,21 +27,15 @@
    <div class = "right">
      <img src ="../assets/images/logo5.png" alt="HusckyLogo" width="320" height="400">
    </div>
-   <!-- <h3>Output: {{ this.output }}</h3> --->
   </main>
 </template>
 
 <script setup>
 import store from "../store/auth";
 import versionState from '../state/version';
-import { ref } from 'vue';
 import {useRouter} from 'vue-router';
 const router = useRouter();
 const apiURL = 'https://4jui141iri.execute-api.us-east-1.amazonaws.com/dev/authenticate'
-
-//Can add a forgot password later on
-
-const loginTitle = ref(versionState.getLoginTitle);
 
 const username = ref('');
 const password = ref('');
