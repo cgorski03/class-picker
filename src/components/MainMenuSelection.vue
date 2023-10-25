@@ -6,6 +6,7 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
+import versionState from '../state/version'
 
 
 const router = useRouter();
@@ -16,6 +17,11 @@ const props = defineProps({
 })
 
 const navigate = () => {
+
+  if(props.name === "Sign Out"){
+    versionState.clearLocalStorage();
+  }
+
   router.push(props.path);
 }
 </script>

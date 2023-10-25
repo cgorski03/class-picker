@@ -9,10 +9,10 @@
       
       <h2 class = "title2">Choose an Option Below</h2>
       
-      <button class="btn" v-on:click.prevent="toLogin">
+      <button class="btn" v-on:click.prevent="toLogin(true)">
         <h4>Student</h4>
       </button>
-      <button class="btn" v-on:click.prevent="toLogin">
+      <button class="btn" v-on:click.prevent="toLogin(false)">
         <h4>Teacher</h4>
       </button>
     </div>
@@ -26,16 +26,17 @@
 
 <script setup>
 
-console.log("Welcome.vue loaded");
-
 import versionState from '../state/version';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
-let toLogin = () => {
-    router.push('/login');
-    versionState.toggleVersion()
+let toLogin = (isStudentButtonPressed) => {
+
+  console.log("isStudentButtonPressed: " + isStudentButtonPressed);
+  versionState.setup(isStudentButtonPressed);
+  console.log("student version cookie: " + versionState.getVersion.value);
+  router.push('/login');
 }
 
 </script>

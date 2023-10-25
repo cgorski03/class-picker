@@ -5,7 +5,7 @@
     </div>
 
     <div class = "middle">
-      <h2 class = "title">{{loginTitle}}</h2>
+      <h2 class = "title">{{versionState.getLoginTitle.value}}</h2>
       <form name="login-form">
 
         <!-- Could add hover to input for clearner look down the road --->
@@ -34,13 +34,9 @@
 <script setup>
 import store from "../store/auth";
 import versionState from '../state/version';
-import { ref } from 'vue';
 import {useRouter} from 'vue-router';
 
 const router = useRouter();
-
-//Can add a forgot password later on
-const loginTitle = ref(versionState.getLoginTitle);
 
 const prop = defineProps({
   username:String,

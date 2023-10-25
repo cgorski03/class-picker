@@ -1,53 +1,47 @@
-import { reactive, computed } from "vue";
+import { ref, computed } from "vue";
 
-//Need to implement state staving to local storage, so users can refresh page and the state they were at will be saved
-//Could do this using cookies
-
-const state = reactive({
-  isStudent: false,
-  loginTitle: "",
-  homePageTitle: "",
-  menuOptions: [{option:"Tutorial", id:1}, {option:"View Schedule", id:2}, {option: "Sign Out", id:3}],
+const state = ref({
+  isStudent: ref(false),
+  menuOptions: JSON.parse(localStorage.getItem("key")) || [],
 });
 
-function toggleVersion() {
-  console.log("Changed version");
-  state.isStudent = !state.isStudent;
-  changeVersionAspects(state);
+function setup(isStudentButtonPressed) {
+  state.value.isStudent = isStudentButtonPressed;
+  state.value.menuOptions = isStudentButtonPressed
+    ? [
+        { option: "Tutorial", id: 1 },
+        { option: "Add Classes", id: 4 },
+        { option: "Drop Classes", id: 5 },
+        { option: "View Schedule", id: 2 },
+        { option: "Sign Out", id: 3 },
+      ]
+    : [
+        { option: "Tutorial", id: 1 },
+        { option: "View Schedule", id: 2 },
+        { option: "Sign Out", id: 3 },
+      ];
+
+  let string = JSON.stringify(state.value.menuOptions);
+  localStorage.setItem("key", string);
+
 }
 
-function changeVersionAspects(state){
-  if(state.isStudent){
-    state.loginTitle = "Student Page";
-    state.homePageTitle = "Welcome to the Student Home Page";
-    state.menuOptions = [
-      {option: "Tutorial", id:1}, 
-      {option: "Add Classes", id:4}, 
-      {option: "Drop Classes", id:5}, 
-      {option: "View Schedule", id:2}, 
-      {option: "Sign Out", id:3}
-    ];
-  }
-  else{
-    state.loginTitle = "Teacher Page";
-    state.homePageTitle = "Welcome to the Teacher Home Page";
-    menuOptions=  [
-      {option:"Tutorial", id:1}, 
-      {option:"View Schedule", id:2}, 
-      {option: "Sign Out", id:3}
-    ];
-  }
+function clearLocalStorage() {
+
+  localStorage.removeItem("key");
 }
 
-const getVersion = computed(() => state.isStudent);
-const getLoginTitle = computed(() => state.loginTitle);
-const getHomePageTitle = computed(() => state.homePageTitle);
-const getMenuOptions = computed(() => state.menuOptions);
+const getVersion = computed(() => state.value.isStudent);
+const getMenuOptions = computed(() => state.value.menuOptions);
+const getLoginTitle = computed(() => state.value.isStudent ? "Student Login" : "Teacher Login");
+const getHomePageTitle = computed(() => state.value.isStudent ? "Welcome to the Student Home Page" : "Welcome to the Teacher Home Page");
+
 
 export default {
+  setup,
+  clearLocalStorage,
   getMenuOptions,
   state,
-  toggleVersion,
   getVersion,
   getLoginTitle,
   getHomePageTitle,
