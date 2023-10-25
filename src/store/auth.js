@@ -1,4 +1,5 @@
 import { createStore } from 'vuex';
+//const AWS = require('aws-sdk@2.1480.0');
 
 export default createStore({
     namespaced: true,

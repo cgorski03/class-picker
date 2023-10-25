@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@unocss/reset": "^0.56.5",
+    "aws-sdk": "^2.1480.0",
+    "uuid": "^9.0.1",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4",
     "vuex": "^4.0.2"
