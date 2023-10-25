@@ -12,11 +12,11 @@
 
         <div>
           <label for="username" class = "upText">Username</label>
-          <input class = "upFormat" type="text" id="username" v-bind="username" />
+          <input class = "upFormat" type="text" id="username" v-model="username" />
         </div>
         <div>
           <label for="password" class = "upText">Password</label>
-          <input class = "upFormat" type="password" id="password" v-bind="password" />
+          <input class = "upFormat" type="password" id="password" v-model="password" />
         </div>
         <button class="btn" type="submit" v-on:click.prevent="login()">
           Login
@@ -27,7 +27,6 @@
    <div class = "right">
      <img src ="../assets/images/logo5.png" alt="HusckyLogo" width="320" height="400">
    </div>
-   <!-- <h3>Output: {{ this.output }}</h3> --->
   </main>
 </template>
 
@@ -35,24 +34,37 @@
 import store from "../store/auth";
 import versionState from '../state/version';
 import {useRouter} from 'vue-router';
-
 const router = useRouter();
+const apiURL = 'https://4jui141iri.execute-api.us-east-1.amazonaws.com/dev/authenticate'
 
-const prop = defineProps({
-  username:String,
-  password:String,
-})
+const username = ref('');
+const password = ref('');
 
 
-  const login = () => {
-    //make sure username OR password are not empty
-    if (prop.username != "" || prop.username != "") {
-      console.log("Authentication complete");
-      router.push('/home')
-    } 
-    else {
-      alert("Username and password can not be empty");
+const login = () => {
+    //construct the url of the get request
+    const url = `${apiURL}?username=${username.value}&password=${password.value}`
+    fetch(url, {
+      method: 'GET',
+    })
+    .then(response => {
+      console.log(response.status)
+    if (response.ok) {
+      console.log('Request was successful');
+      router.push('/home');
     }
+    if (response.status == 400){
+      alert('Please input a username and password');
+      router.push('/login');
+    }
+    if (response.status == 401){
+      alert('Username or password are incorrect. Please try again.');
+      router.push('/login');
+    }
+  })
+  .catch(error => {
+    console.error('Fetch error:', error);
+  });
   }
 
 </script>
