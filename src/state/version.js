@@ -9,16 +9,16 @@ function setup(isStudentButtonPressed) {
   state.value.isStudent = isStudentButtonPressed;
   state.value.menuOptions = isStudentButtonPressed
     ? [
-        { option: "Tutorial", id: 1 },
-        { option: "Add Classes", id: 4 },
-        { option: "Drop Classes", id: 5 },
-        { option: "View Schedule", id: 2 },
-        { option: "Sign Out", id: 3 },
+        { option: "Tutorial", id: 1, path:"/" },
+        { option: "Add Classes", id: 4, path:"/" },
+        { option: "Drop Classes", id: 5, path:"/" },
+        { option: "View Schedule", id: 2, path:"/" },
+        { option: "Sign Out", id: 3, path:"/" },
       ]
     : [
-        { option: "Tutorial", id: 1 },
-        { option: "View Schedule", id: 2 },
-        { option: "Sign Out", id: 3 },
+        { option: "Tutorial", id: 1, path:"/" },
+        { option: "View Schedule", id: 2, path:"/" },
+        { option: "Sign Out", id: 3, path:"/" },
       ];
 
   let string = JSON.stringify(state.value.menuOptions);

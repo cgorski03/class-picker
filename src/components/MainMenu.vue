@@ -3,7 +3,7 @@
     <ul class="menu">
       <li class="titleItem">Main Menu</li>
       <li v-for="option in menuOptions">
-        <MainMenuSelection :name = option.option path = "/"></MainMenuSelection>
+        <MainMenuSelection :name = option.option :path = option.path></MainMenuSelection>
       </li>
     </ul>
   </nav>  
