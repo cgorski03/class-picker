@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import store from "../store/auth";
+import {ref} from 'vue';
 import versionState from '../state/version';
 import {useRouter} from 'vue-router';
 const router = useRouter();
