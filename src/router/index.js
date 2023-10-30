@@ -7,7 +7,11 @@ import FormView from "../views/FormView.vue";
 import FetchView from "../views/FetchView.vue";
 import LoginView from "../views/LoginView.vue";
 import WelcomeView from "../views/WelcomeView.vue";
-import MainMenu from "../components/MainMenu.vue";
+import AddClasses from "../views/AddClassesView.vue";
+import DropClasses from "../views/DropClassesView.vue";
+import Schedule from "../views/ScheduleView.vue";
+import Tutorial from "../views/TutorialView.vue";
+
 
 const router = createRouter({
   // the history mode determines how vue router interacts with the url.
@@ -29,6 +33,26 @@ const router = createRouter({
       name: "welcome",
       component: WelcomeView,
      },
+     {
+      path: "/tutorial",
+      name: "tutorial",
+      component: Tutorial,
+     },
+     {
+      path: "/addclasses",
+      name: "addclasses",
+      component: AddClasses,
+     },
+     {
+      path: "/dropclasses",
+      name: "dropclasses",
+      component: DropClasses,
+     },
+     {
+      path: "/schedule",
+      name: "schedule",
+      component: Schedule,
+     },
     {
       path: "/login",
       name: "login",
@@ -39,11 +63,6 @@ const router = createRouter({
       name: "home",
       component: HomeView,
     },
-    {
-      path: "/",
-      name: "mainmenu",
-      component: MainMenu,
-     },
     {
       path: "/form",
       name: "form",
