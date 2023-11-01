@@ -34,16 +34,23 @@
 import store from "../store/auth";
 import versionState from '../state/version';
 import {useRouter} from 'vue-router';
+import {ref} from 'vue';
 const router = useRouter();
 const apiURL = 'https://4jui141iri.execute-api.us-east-1.amazonaws.com/dev/authenticate'
 
 const username = ref('');
 const password = ref('');
-
+let state = ''
 
 const login = () => {
     //construct the url of the get request
-    const url = `${apiURL}?username=${username.value}&password=${password.value}`
+
+    if(versionState.getVersion.value){
+      state = 'user'
+    }else{
+      state = 'teacher'
+    }
+    const url = `${apiURL}?username=${username.value}&password=${password.value}&state=${state}`
     fetch(url, {
       method: 'GET',
     })
