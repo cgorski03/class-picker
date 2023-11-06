@@ -1,39 +1,38 @@
 <template>
-    <button class = "item" v-on:click.prevent="addclass">
-        <p>{{classTitle}}   {{ classCA }}   {{ classCANum }}    {{ classSubj }}</p>
-    </button>
+  <button class="item" @click.prevent="addclass">
+    <p>{{ classData.classTitle }} {{ classData.classCA }} {{ classData.classCANum }} {{ classData.classSubj }}</p>
+  </button>
 </template>
 
 <script setup>
+import { defineProps } from 'vue';
 
 const props = defineProps({
-    classTitle:String,
-    classCA:String,
-    classCANum:String,
-    classSubj:String,
-})
+  classData: {
+    type: Object, // Assuming classData is an object
+    required: true,
+  },
+});
 
 const addclass = () => {
-// where we will actually add class to user classes table
-
-}
+  // Where you can implement the logic to add the class to the user's classes table
+};
 
 </script>
 
-
 <style scoped>
 .item {
-    border-bottom: 1px solid Black;
-    width: 80%;
-    margin-right: auto;
-    padding: 20px;
+  border-bottom: 1px solid black;
+  width: 80%;
+  margin-right: auto;
+  padding: 20px;
 }
 
-.item:hover{
+.item:hover {
   background-color: gray;
 }
 
-.item:active{
+.item:active {
   background-color: darkgray;
 }
 </style>

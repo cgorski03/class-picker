@@ -20,7 +20,7 @@
             </form>
           </div>
           <div>
-            <!--<ClassTable/>-->
+            <ClassTable :classes = classList></ClassTable>
           </div>
         </div>
       </div>
@@ -33,10 +33,28 @@
   //import ClassTable from "../components/AddClassTable.vue";
   import { ref } from "vue"
 
-  const className = ref("");
+  class Class{
+    constructor(classTitle, classCA, classCANum, classSubj){
+      this.classTitle= classTitle;
+      this.classCA = classCA;
+      this.classCANum = classCANum;
+      this.classSubj = classSubj;
+    }
+  }
+  
+  let classList = ref<Array<Class>>([]);
 
   const search = () => {
     //Implent fetch to get list of classes corresponding to name
+
+    //Once fetch class data, pass into classList like this
+    const classTitle = ref("");
+    const classCA = ref("");
+    const classCANum = ref("");
+    const classSubj = ref("");
+
+    const newClass = ref(new Class(classTitle, classCA, classCANum, classSubj));
+    classList.push(newClass);
   }
 
   </script>
