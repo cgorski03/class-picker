@@ -42,6 +42,7 @@ const password = ref('');
 
 
 const login = () => {
+  
     //construct the url of the get request
     const url = `${apiURL}?username=${username.value}&password=${password.value}`
     fetch(url, {

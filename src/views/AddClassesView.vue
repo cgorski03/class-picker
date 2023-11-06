@@ -9,9 +9,8 @@
           <div class = "formatText">
             <h2>Add Classes</h2>
           </div>
-          <div class = "formatImage">
-            <!-- Need to fix so it resizes and works on different display -->
-            <img src ="../assets/images/logo6.jpg" alt="HusckyLogo" width="550" height="366">
+          <div>
+            <ClassTable/>
           </div>
         </div>
       </div>
@@ -21,7 +20,7 @@
   
   <script setup>
   import MainMenu from "../components/MainMenu.vue";
-  import versionState from "../state/version";
+  import ClassTable from "../components/AddClassTable";
   
   </script>
   <style scoped>
