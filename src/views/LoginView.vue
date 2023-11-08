@@ -5,18 +5,18 @@
     </div>
 
     <div class = "middle">
-      <h2 class = "title">{loginTitle}</h2>
+      <h2 class = "title">{{versionState.getLoginTitle.value}}</h2>
       <form name="login-form">
 
         <!-- Could add hover to input for clearner look down the road --->
 
         <div>
           <label for="username" class = "upText">Username</label>
-          <input class = "upFormat" type="text" id="username" v-model="input.username" />
+          <input class = "upFormat" type="text" id="username" v-model="username" />
         </div>
         <div>
           <label for="password" class = "upText">Password</label>
-          <input class = "upFormat" type="password" id="password" v-model="input.password" />
+          <input class = "upFormat" type="password" id="password" v-model="password" />
         </div>
         <button class="btn" type="submit" v-on:click.prevent="login()">
           Login
@@ -27,44 +27,52 @@
    <div class = "right">
      <img src ="../assets/images/logo5.png" alt="HusckyLogo" width="320" height="400">
    </div>
-   <!-- <h3>Output: {{ this.output }}</h3> --->
   </main>
 </template>
 
-<script>
-import { SET_AUTHENTICATION, SET_USERNAME } from "../util/storeconstants";
-export default {
-  name: 'LoginPage',
-  props:{
-    loginTitle: String
-  },
-  data() {
-    return {
-      input: {
-        username: "",
-        password: ""
-      },
-      output: "",
+<script setup>
+import {ref} from 'vue';
+import versionState from '../state/version';
+import {useRouter} from 'vue-router';
+import {ref} from 'vue';
+const router = useRouter();
+const apiURL = 'https://4jui141iri.execute-api.us-east-1.amazonaws.com/dev/authenticate'
+
+const username = ref('');
+const password = ref('');
+let state = ''
+
+const login = () => {
+    //construct the url of the get request
+
+    if(versionState.getVersion.value){
+      state = 'user'
+    }else{
+      state = 'teacher'
     }
-  },
-  methods: {
-    login() {
-      //make sure username OR password are not empty
-      if (this.input.username != "" || this.input.username != "") {
-        this.output = "Authentication complete"
-        //stores true to the set_authentication and username to the set_username 
-        this.$store.commit(`auth/${SET_AUTHENTICATION}`, true);
-        this.$store.commit(`auth/${SET_USERNAME}`, this.input.username);
-        this.output = "Authentication complete."
-        this.$router.push('/home')
-      } 
-      else {
-        this.$store.commit(`auth/${SET_AUTHENTICATION}`, false);
-        this.output = "Username and password can not be empty"
-      }
-    },
-  },
-}
+    const url = `${apiURL}?username=${username.value}&password=${password.value}&state=${state}`
+    fetch(url, {
+      method: 'GET',
+    })
+    .then(response => {
+      console.log(response.status)
+    if (response.ok) {
+      console.log('Request was successful');
+      router.push('/home');
+    }
+    if (response.status == 400){
+      alert('Please input a username and password');
+      router.push('/login');
+    }
+    if (response.status == 401){
+      alert('Username or password are incorrect. Please try again.');
+      router.push('/login');
+    }
+  })
+  .catch(error => {
+    console.error('Fetch error:', error);
+  });
+  }
 
 </script>
 

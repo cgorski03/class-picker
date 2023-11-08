@@ -7,7 +7,7 @@
     <div class = "mainContent">
       <div class="home">
         <div class = "formatText">
-          <h2>{homePageTitle}</h2>
+          <h2>{{versionState.getHomePageTitle.value}}</h2>
         </div>
         <div class = "formatImage">
           <!-- Need to fix so it resizes and works on different display -->
@@ -19,21 +19,12 @@
   </main>
 </template>
 
-<script>
+<script setup>
 import MainMenu from "../components/MainMenu.vue";
-
-export default{
-  name: "home",
-  props:{ 
-    homePageTitle: String
-  },
-  components: {
-    MainMenu
-  }
-}
+import versionState from "../state/version";
 
 </script>
-<style>
+<style scoped>
 .home {
   padding: 0;
   display: flex;
@@ -56,6 +47,8 @@ img {
 
 .menuContent {  
   width: 20%;
+  background-color: #B90E0A;
+  border: 2px black;
 }
 
 .mainContent{
