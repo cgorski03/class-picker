@@ -21,7 +21,6 @@
   
   <script setup>
   import MainMenu from "../components/MainMenu.vue";
-  import versionState from "../state/version";
   
   </script>
   <style scoped>
