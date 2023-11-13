@@ -5,6 +5,9 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
+
+const yourCurrentClassList = ref([])
 
 const props = defineProps({
   classData: {
@@ -13,10 +16,48 @@ const props = defineProps({
   },
 });
 
-const addclass = () => {
-  // Where you can implement the logic to add the class to the user's classes table
-};
+const emit = defineEmits("sendclass", yourCurrentClassList)
 
+const addclass = async () => {
+  // Where you can implement the logic to add the class to the user's classes table
+
+  const url = "https://4jui141iri.execute-api.us-east-1.amazonaws.com/dev/class"
+  try{
+    const response = await fetch(url, {
+          method: "POST",
+          body:JSON.stringify({
+            "username": "jak19018",
+            "course": props.classData.classTitle
+          }),
+          headers: {
+          "Content-Type": "application/json"
+          }        
+    }
+    )
+    const responseText = await response.text();
+    if(response.ok){
+        console.log('Success:', result);
+        console.log("You added the class");
+        
+        const responseData = JSON.parse(responseText);
+
+        yourCurrentClassList.value = [];
+
+        for (const key in responseData) {
+          if (Object.hasOwnProperty.call(responseData, key)){
+            yourCurrentClassList.value.push(item['CAT NBR']);
+          }
+        }   
+        emit("sendclass", yourCurrentClassList.value)
+    }
+    else {
+      console.log("Error response:", responseText);
+    }
+  }
+  catch (error) {
+    console.error("Error during fetch:", error);
+  }
+}
 </script>
 
 <style scoped>

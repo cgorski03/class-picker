@@ -60,14 +60,11 @@ const search = async () => {
     );
 
     // Log the entire response to the console
-    console.log("Response status:", response.status);
-    console.log("Response headers:", response.headers);
     const responseText = await response.text();
 
     // Check if the response is successful (status code 2xx)
     if (response.ok) {
       const responseData = JSON.parse(responseText);
-      console.log(responseData);
 
       // Clear existing classList
       classList.value = [];
@@ -80,15 +77,14 @@ const search = async () => {
             new Class(
               item.Title,
               item['CA DESCR'],
-              item.SUBJ,
-              item['CAT NBR']
+              item['CAT NBR'],
+              item.SUBJ
             )
           );
           classList.value.push(newClass);
         }
       }
 
-      console.log("classList:", classList.value);
     } else {
       console.log("Error response:", responseText);
     }
