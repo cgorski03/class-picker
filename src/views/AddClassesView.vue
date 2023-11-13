@@ -17,6 +17,7 @@
                 placeholder="Search by keyword"
                 id="className"
                 v-model="className"
+                @keyup.enter="search"
               />
             </div>
             <div id="searchbutton">
@@ -42,10 +43,10 @@ let classList = ref([]);
 
 class Class {
   constructor(classTitle, classCA, classCANum, classSubj) {
-    this.classTitle = classTitle;
     this.classCA = classCA;
-    this.classCANum = classCANum;
     this.classSubj = classSubj;
+    this.classCANum = classCANum;
+    this.classTitle = classTitle;
   }
 }
 
@@ -75,10 +76,10 @@ const search = async () => {
           const item = responseData[key];
           const newClass = reactive(
             new Class(
-              item.Title,
               item['CA DESCR'],
+              item.SUBJ,
               item['CAT NBR'],
-              item.SUBJ
+              item.Title
             )
           );
           classList.value.push(newClass);
