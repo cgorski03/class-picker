@@ -34,6 +34,7 @@
 import {ref} from 'vue';
 import versionState from '../state/version';
 import {useRouter} from 'vue-router';
+
 const router = useRouter();
 const apiURL = 'https://4jui141iri.execute-api.us-east-1.amazonaws.com/dev/authenticate'
 
