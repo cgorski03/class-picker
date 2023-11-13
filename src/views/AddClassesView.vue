@@ -43,10 +43,10 @@ let classList = ref([]);
 
 class Class {
   constructor(classTitle, classCA, classCANum, classSubj) {
-    this.classCA = classCA;
-    this.classSubj = classSubj;
-    this.classCANum = classCANum;
     this.classTitle = classTitle;
+    this.classCA = classCA;
+    this.classCANum = classCANum;
+    this.classSubj = classSubj;
   }
 }
 
@@ -76,10 +76,10 @@ const search = async () => {
           const item = responseData[key];
           const newClass = reactive(
             new Class(
+              item.Title,
               item['CA DESCR'],
-              item.SUBJ,
               item['CAT NBR'],
-              item.Title
+              item.SUBJ
             )
           );
           classList.value.push(newClass);

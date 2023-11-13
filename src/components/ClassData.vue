@@ -1,6 +1,6 @@
 <template>
   <button class="item" @click.prevent="addclass">
-    <p>{{ classData.classTitle }} {{ classData.classCA }} {{ classData.classCANum }} {{ classData.classSubj }}</p>
+    <p>{{ classData.classSubj }} {{ classData.classCANum }} {{ classData.classTitle }}</p>
   </button>
 </template>
 
