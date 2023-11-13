@@ -2,11 +2,12 @@ import json
 import boto3
 
 dynamodb = boto3.resource('dynamodb')
-table = dynamodb.Table('user_table')
 
 def lambda_handler(event, context):
     username = event['queryStringParameters']['username']
     password = event['queryStringParameters']['password']
+    state = event['queryStringParameters']['state']
+    table = dynamodb.Table(f'{state}_table')
 
     headers = {
         "Access-Control-Allow-Origin": "*",  # Replace '*' with specific origins if needed

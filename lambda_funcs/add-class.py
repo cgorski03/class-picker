@@ -32,15 +32,12 @@ import urllib.parse
     Error Handling:
     The function gracefully handles errors and provides informative messages along with appropriate HTTP status codes.
     """
-import json
-import boto3
-import urllib.parse
 
 def lambda_handler(event, context):
     headers = {
         "Access-Control-Allow-Origin": "*",  
         "Access-Control-Allow-Headers": "Content-Type",
-        "Access-Control-Allow-Methods": "OPTIONS, POST, GET"
+        "Access-Control-Allow-Methods": "POST"
     }
     
     request_data = json.loads(event['body'])
@@ -85,6 +82,7 @@ def lambda_handler(event, context):
                 'statusCode': 200,
                 'headers': headers,
                 'body': json.dumps(list(response['Attributes']))
+
         }
 
         else:
