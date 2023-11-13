@@ -28,14 +28,13 @@ Response:
 """
 
 def lambda_handler(event, context):
+    lowercase_words = set('to', 's', 'a', 'its', 'before', 'liberalism', 'with', 'of', 'since', 'for', 'from', 'as', 'into', 'and', 'through', 'the', 'on', 'de', 'western', 'present', 'in', 'o')
     dynamodb = boto3.resource('dynamodb')
     search = event['queryStringParameters']['search']
     table = dynamodb.Table('CourseTable')
-
     tokens = search.split('%20') #split the string at space characters to find keywords
     
-    for i in range(len(tokens)):
-        tokens[i] = tokens[i].title()
+    filtered_keywords = [word.title() if word.lower() not in lowercase_words else word for word in tokens]
     #prevent cors errors
     headers = {
         "Access-Control-Allow-Origin": "*",  
@@ -45,8 +44,8 @@ def lambda_handler(event, context):
     
     
     # Build the filter expression dynamically with multiple keywords
-    filter_expression = ' and '.join([f'contains(Title, :keyword{i})' for i, keyword in enumerate(tokens)])
-    expression_attribute_values = {f':keyword{i}': keyword for i, keyword in enumerate(tokens)}
+    filter_expression = ' and '.join([f'contains(Title, :keyword{i})' for i, keyword in enumerate(filtered_keywords)])
+    expression_attribute_values = {f':keyword{i}': keyword for i, keyword in enumerate(filtered_keywords)}
     
     print(filter_expression)
     # Perform the scan operation
