@@ -2,12 +2,13 @@
   <nav>
     <ul class="AddClassTable">
       <li class="titleItem">Classes</li>
-      <li v-for="class in props.classes" :key="class.classTitle">
-        <ClassData :classData="class"></ClassData>
+      <li v-for="classInstance in props.classes" :key="classInstance.classTitle">
+        <ClassData :classData="classInstance"></ClassData>
       </li>
     </ul>
   </nav>
 </template>
+
 
 <script setup>
 import ClassData from "../components/ClassData.vue"
