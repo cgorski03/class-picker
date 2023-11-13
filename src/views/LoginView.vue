@@ -31,51 +31,42 @@
 </template>
 
 <script setup>
-import {ref} from 'vue';
+import { ref } from 'vue';
 import versionState from '../state/version';
-import {useRouter} from 'vue-router';
-
+import { useRouter } from 'vue-router';
 const router = useRouter();
-const apiURL = 'https://4jui141iri.execute-api.us-east-1.amazonaws.com/dev/authenticate'
+const apiURL = 'https://4jui141iri.execute-api.us-east-1.amazonaws.com/dev/authenticate';
 
 const username = ref('');
 const password = ref('');
-let state = ''
+let state = '';
 
 const login = () => {
+  // Construct the url of the get request
+  state = versionState.getVersion.value ? 'user' : 'teacher';
+  const url = `${apiURL}?username=${username.value}&password=${password.value}&state=${state}`;
   
-    //construct the url of the get request
+  fetch(url, {
+    method: 'GET',
+  })
+  .then(response => {
+    console.log(response.status);
 
-    if(versionState.getVersion.value){
-      state = 'user'
-    }else{
-      state = 'teacher'
-    }
-    const url = `${apiURL}?username=${username.value}&password=${password.value}&state=${state}`
-    fetch(url, {
-      method: 'GET',
-    })
-    .then(response => {
-      console.log(response.status)
     if (response.ok) {
       console.log('Request was successful');
       router.push('/home');
-    }
-    if (response.status == 400){
+    } else if (response.status === 400) {
       alert('Please input a username and password');
-      router.push('/login');
-    }
-    if (response.status == 401){
+    } else if (response.status === 401) {
       alert('Username or password are incorrect. Please try again.');
-      router.push('/login');
     }
   })
   .catch(error => {
     console.error('Fetch error:', error);
   });
-  }
-
+}
 </script>
+
 
 <style>
 

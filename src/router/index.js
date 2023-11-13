@@ -5,10 +5,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import FormView from "../views/FormView.vue";
 import FetchView from "../views/FetchView.vue";
-<<<<<<< HEAD
-import LoginView from '../views/LoginView.vue';
-import MainMenu from '../components/MainMenu.vue';
-=======
+
 import LoginView from '../views/LoginView.vue';
 import MainMenu from '../components/MainMenu.vue';
 import WelcomeView from '../views/WelcomeView.vue';
@@ -17,7 +14,6 @@ import DropClasses from '../views/DropClassesView.vue';
 import Schedule from '../views/ScheduleView.vue';
 import Tutorial from '../views/TutorialView.vue';
 
->>>>>>> 8db1f08935d38706c4569cf87e0070818ba3b117
 
 const router = createRouter({
   // the history mode determines how vue router interacts with the url.

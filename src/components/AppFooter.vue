@@ -10,7 +10,7 @@ export default{
 </script>
 
 <style>
-
+ 
 .footer div{
   position: fixed;
   left: 0;
