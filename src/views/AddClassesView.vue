@@ -12,7 +12,7 @@
           <div>
             <form class = "searchbar">
               <div id = "searchfield">
-                <input type="text" placeholder="Seacrh by class name" id="className" v-model="className" />
+                <input type="text" placeholder="Seacrh by keyword" id="className" v-model="className" />
               </div>
               <div id = "searchbutton">
                 <button v-on:click.prevent="search"></button>
