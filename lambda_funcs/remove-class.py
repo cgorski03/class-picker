@@ -1,16 +1,17 @@
 import json
 import boto3
 import urllib.parse
+
 """
-    Course Enrollment Lambda Function
+    Course Dropping Lambda Function
 
     This Lambda function handles course enrollment for users. It checks if a user is in the system,
-    verifies if a course exists, and then adds the course to the user's record if both conditions are met.
+    verifies if a course exists, and then removes the course from the user's record if both conditions are met.
 
     Usage:
     To use this Lambda function, trigger it with an HTTP request to https://4jui141iri.execute-api.us-east-1.amazonaws.com/dev/class, passing the course name and username in the request body as JSON.
     Example:
-    - Send an HTTP POST request to your Lambda URL with the following JSON body:
+    - Send an HTTP DELETE request to your Lambda URL with the following JSON body:
       {
         "course": "YourCourseName",
         "username": "YourUsername"
@@ -32,15 +33,11 @@ import urllib.parse
     Error Handling:
     The function gracefully handles errors and provides informative messages along with appropriate HTTP status codes.
     """
-import json
-import boto3
-import urllib.parse
-
 def lambda_handler(event, context):
     headers = {
         "Access-Control-Allow-Origin": "*",  
         "Access-Control-Allow-Headers": "Content-Type",
-        "Access-Control-Allow-Methods": "OPTIONS, POST, GET"
+        "Access-Control-Allow-Methods": "DELETE"
     }
     
     request_data = json.loads(event['body'])
@@ -74,7 +71,7 @@ def lambda_handler(event, context):
             # Add the course to the user's classes (string set)
         response = userTable.update_item(
             Key={'username': username},
-            UpdateExpression='ADD courses :new_element',
+            UpdateExpression='DELETE courses :new_element',
             ExpressionAttributeValues={':new_element': {course_name}},
             ReturnValues='ALL_NEW'  # If you want to return the updated item
         )
