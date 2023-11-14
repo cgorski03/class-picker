@@ -1,5 +1,5 @@
 <template>
-  <div id ="tableLayout">
+  <div id="tableLayout">
     <div id="classSearch">
       <nav>
         <ul class="AddClassTable">
@@ -7,8 +7,8 @@
             <h2>Classes</h2>
           </li>
           <li v-for="classInstance in props.classes" :key="classInstance.classTitle">
-            <div @sendclass="(yourCurrentClassList) => loadYourClasses">
-              <ClassData :classData="classInstance"></ClassData>
+            <div>
+              <ClassData @sendclass="loadYourClasses" :classData="classInstance"></ClassData>
             </div>
           </li>
         </ul>
@@ -20,8 +20,8 @@
           <li id="titleItem">
             <h2>Your Classes</h2>
           </li>
-          <li v-for="c in yourclasseslist">
-            <p>{c.classCANUM}</p>
+          <li id="yourclassitem" v-for="c in yourclasseslist">
+            <p>{{ c }}</p>
           </li>
         </ul>
       </nav>
@@ -29,27 +29,26 @@
   </div>
 </template>
 
-
 <script setup>
-import ClassData from "../components/ClassData.vue"
+import ClassData from "../components/ClassData.vue";
 import { ref } from 'vue';
 
-const yourclasseslist = ref([])
+let yourclasseslist = ref([]);
+
 
 const props = defineProps({
   classes: {
     type: Array,
     default: () => [],
   },
-})
+});
 
-const loadYourClasses = (yourCurrentClassList) =>{
+//const { emit } = defineEmits(['sendclass']);
 
-  for(let i = 0; i < yourCurrentClassList.length; i++){
-    yourclasseslist.value.push(yourCurrentClassList[i]);
-  }
-}
-
+const loadYourClasses = (yourCurrentClassList) => {
+  console.log('loadYourClasses called with:', yourCurrentClassList);
+  yourclasseslist.value = yourCurrentClassList;
+};
 </script>
 
 <style>
@@ -73,5 +72,9 @@ const loadYourClasses = (yourCurrentClassList) =>{
 
 #yourClasses{
   width: 20%
+}
+
+#yourclassitem{
+  border: 2px black;
 }
 </style>
