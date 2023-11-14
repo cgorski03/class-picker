@@ -38,7 +38,6 @@ const addclass = async () => {
     )
     const responseText = await response.text();
     if(response.ok){
-        console.log('Success:', result);
         console.log("You added the class");
         
         //Parsing through the response text to get string list of class names
@@ -46,12 +45,7 @@ const addclass = async () => {
 
         //reseting list to empty for the next time you add a class
         yourCurrentClassList.value = [];
-
-        for (const key in responseData) {
-          if (Object.hasOwnProperty.call(responseData, key)){
-            yourCurrentClassList.value.push(item['CAT NBR']);
-          }
-        }   
+        yourCurrentClassList.value =responseData;
         emit("sendclass", yourCurrentClassList.value)
     }
     else {
