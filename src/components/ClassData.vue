@@ -5,18 +5,18 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, defineEmits } from 'vue';
 
 const yourCurrentClassList = ref([])
+
+const emit  = defineEmits(['sendclass']); 
 
 const props = defineProps({
   classData: {
     type: Object, // Assuming classData is an object
     required: true,
   },
-});
-
-const emit = defineEmits("sendclass", yourCurrentClassList)
+})
 
 const addclass = async () => {
   // Where you can implement the logic to add the class to the user's classes table
@@ -36,19 +36,18 @@ const addclass = async () => {
     )
     const responseText = await response.text();
     if(response.ok){
-        console.log('Success:', result);
         console.log("You added the class");
         
         const responseData = JSON.parse(responseText);
 
         yourCurrentClassList.value = [];
 
-        for (const key in responseData) {
-          if (Object.hasOwnProperty.call(responseData, key)){
-            yourCurrentClassList.value.push(item['CAT NBR']);
-          }
-        }   
+        console.log('API Response:', responseData);
+
+        yourCurrentClassList.value=responseData;
+
         emit("sendclass", yourCurrentClassList.value)
+        
     }
     else {
       console.log("Error response:", responseText);
