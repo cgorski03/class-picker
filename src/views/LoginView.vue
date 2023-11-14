@@ -42,6 +42,8 @@ const username = ref('');
 const password = ref('');
 let state = ''
 
+//checks if user has a username and password in our database
+//Will replace with auth 0
 const login = () => {
   
     //construct the url of the get request

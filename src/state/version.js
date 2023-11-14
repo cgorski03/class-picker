@@ -1,7 +1,10 @@
 import { ref, computed } from "vue";
 
 const state = ref({
+  //did a student or teacher log in
   isStudent: ref(false),
+
+  //Menu options state that is equal to a list of options based on student or teacher state
   menuOptions: JSON.parse(localStorage.getItem("key")) || [],
 });
 

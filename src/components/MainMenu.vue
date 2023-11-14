@@ -14,6 +14,7 @@ import MainMenuSelection from "./MainMenuSelection.vue";
 import versionState from '../state/version';
 import { ref } from 'vue'
 
+//ouputs different menu options based on student or teacher state
 let menuOptions = ref(versionState.getMenuOptions);
 
 </script>

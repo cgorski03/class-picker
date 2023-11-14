@@ -37,7 +37,10 @@ import MainMenu from "../components/MainMenu.vue";
 import ClassTable from "../components/AddClassTable.vue";
 import { ref, reactive } from "vue";
 
+//stores the user input
 let className = ref("");
+
+//stores the list of classes to send to the child component
 let classList = ref([]);
 
 class Class {
@@ -49,6 +52,7 @@ class Class {
   }
 }
 
+//searches for classes in the databased by name
 const search = async () => {
   try {
     // Encode the className parameter
