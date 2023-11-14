@@ -17,6 +17,7 @@
                 placeholder="Search by keyword"
                 id="className"
                 v-model="className"
+                @keyup.enter="search"
               />
             </div>
             <div id="searchbutton">

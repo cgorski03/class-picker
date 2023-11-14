@@ -5,11 +5,9 @@
 </template>
 
 <script setup>
-import { ref, defineEmits } from 'vue';
+import { ref } from 'vue';
 
 const yourCurrentClassList = ref([])
-
-const emit  = defineEmits(['sendclass']); 
 
 //take in data from Class class
 const props = defineProps({
@@ -17,8 +15,9 @@ const props = defineProps({
     type: Object, // Assuming classData is an object
     required: true,
   },
-})
+});
 
+const emit = defineEmits("sendclass", yourCurrentClassList)
 
 //add a class to user schedule and return the users current schedule
 const addclass = async () => {
@@ -39,7 +38,7 @@ const addclass = async () => {
     )
     const responseText = await response.text();
     if(response.ok){
-
+        console.log('Success:', result);
         console.log("You added the class");
         
         //Parsing through the response text to get string list of class names
@@ -47,11 +46,13 @@ const addclass = async () => {
 
         //reseting list to empty for the next time you add a class
         yourCurrentClassList.value = [];
-        yourCurrentClassList.value=responseData;
 
-        //emiting user schedule class names to parent class 
+        for (const key in responseData) {
+          if (Object.hasOwnProperty.call(responseData, key)){
+            yourCurrentClassList.value.push(item['CAT NBR']);
+          }
+        }   
         emit("sendclass", yourCurrentClassList.value)
-        
     }
     else {
       console.log("Error response:", responseText);

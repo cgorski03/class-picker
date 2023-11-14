@@ -1,5 +1,5 @@
 <template>
-  <div id="tableLayout">
+  <div id ="tableLayout">
     <div id="classSearch">
       <nav>
         <ul class="AddClassTable">
@@ -44,7 +44,9 @@ const props = defineProps({
 });
 
 //this handles the data sent up by the child component
+
 const loadYourClasses = (yourCurrentClassList) => {
+  console.log('loadYourClasses called with:', yourCurrentClassList);
   yourclasseslist.value = yourCurrentClassList;
 };
 </script>
