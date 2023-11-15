@@ -15,7 +15,13 @@ import versionState from '../state/version';
 import { ref } from 'vue'
 
 //ouputs different menu options based on student or teacher state
-let menuOptions = ref(versionState.getMenuOptions);
+let menuOptions = [
+        { option: "Tutorial", id: 1, path:"/tutorial" },
+        { option: "Add Classes", id: 4, path:"/addclasses" },
+        { option: "Drop Classes", id: 5, path:"/dropclasses" },
+        { option: "View Schedule", id: 2, path:"/schedule" },
+        { option: "Sign Out", id: 3, path:"/" },
+      ]
 
 </script>
 
