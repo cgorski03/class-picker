@@ -97,83 +97,86 @@ const search = async () => {
 </script>
 
 <style scoped>
+/* Main layout */
+/* Main layout */
+main {
+  display: flex;
+  flex-direction: row;
+}
+
+.menuContent {
+  width: 20%;
+  background-color: #b90e0a;
+  border: 2px solid black; /* Ensure border is visible */
+}
+
+.mainContent {
+  width: 80%;
+  padding: 20px; /* Add some padding for spacing */
+}
+
+/* Home and heading styles */
 .home {
-  padding: 0;
   display: flex;
   flex-direction: column;
 }
 
 .home h2 {
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 2rem; /* Slightly larger for emphasis */
   background-color: #151e3d;
   color: white;
-  padding: 25px;
+  padding: 15px;
+  margin-bottom: 20px; /* Space below heading */
 }
 
-.menuContent {
-  width: 20%;
-  background-color: #b90e0a;
-  border: 2px black;
-}
-
-.mainContent {
-  width: 80%;
-}
-
-main {
-  display: flex;
-  flex-direction: row;
-}
-
+/* Search bar styles */
 .searchbar {
   background-color: #151e3d;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  margin-left: 60px;
-  margin-right: 60px;
-  padding: 30px;
-  width: 90%;
+  padding: 20px;
+  margin: 0 60px; /* Simplified margin */
+  border-radius: 10px; /* Rounded corners */
   display: flex;
-  flex-direction: row;
+  align-items: center; /* Align items vertically */
+  justify-content: space-between; /* Space out fields */
 }
+
 .searchbar #searchfield {
-  margin-left: 120px;
-  width: 75%;
+  flex-grow: 1; /* Allow search field to grow */
+  margin-right: 20px; /* Space between field and button */
 }
 
 .searchbar input {
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 30px;
-  display: block;
+  font-size: 1rem;
+  padding: 10px; /* Padding for better text visibility */
+  border-radius: 5px; /* Rounded corners for input */
 }
 
 .searchbar input::placeholder {
-  text-align: center;
-  color: black;
-  font-weight: 500;
-}
-.searchbar input:hover {
-  background-color: lightgray;
+  color: #aaa; /* Lighter color for placeholder */
 }
 
+.searchbar input:hover {
+  background-color: #e8e8e8; /* Light hover effect */
+}
+
+/* Button styles */
 .searchbar button {
-  border-radius: 15%;
-  background: url("../assets/images/search.webp") no-repeat scroll 0 0 transparent;
-  background-size: 50px;
-  color: #000000;
+  background: url("../assets/images/search.webp") no-repeat center;
+  background-size: contain;
+  width: 50px; /* Fixed width for button */
+  height: 50px; /* Fixed height for button */
+  border: none; /* Remove border */
   cursor: pointer;
-  padding: 25px 25px;
-  border: 1px white;
 }
 
 .searchbar button:hover {
-  background-color: grey;
+  background-color: #ccc; /* Hover effect for button */
 }
 
 .searchbar button:active {
-  background-color: darkgray;
+  background-color: #bbb; /* Active state effect */
 }
+
 </style>

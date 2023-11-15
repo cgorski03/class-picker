@@ -57,53 +57,45 @@ main {
 }
 
 .middle {
-  margin-top: 35px;
-  width: 34%;
+  margin-top: 95px;
+  width: 34%; /* Adjust width as needed */
   margin-bottom: 35px;
-  background-color: #151E3D;
+  background-color: rgba(255, 255, 255, 0.70); /* Semi-transparent background */
+  padding: 40px;
+  border-radius: 15px; /* Rounded corners for the form */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.title {
-  text-align: center;
-  font-size: 30px;
-  font-weight: bold;
-  background-color: #151E3D;
-  color: white;
+.title, .title2 {
+  background-color: transparent; /* Make the title backgrounds transparent */
+  color: rgb(0, 0, 0);
   margin-bottom: 30px;
 }
 
-.title2 {
-  text-align: center;
-  font-size: 25px;
-  font-weight: semi-bold;
+.btn {
   background-color: #151E3D;
   color: white;
-}
-
-.btn{
+  padding: 15px 60px; /* Adjust padding to your preference */
   margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
   margin-bottom: 30px;
-  display: block;
-  background-color: White;
-  border: 2px solid Black;
-  padding: 30px 90px;
 }
 
-.btn h4{
-  text-align: left;  
-  font-weight: bold;
-  font-size: 20px; 
-  color: Black;
+.btn h4 {
+  color: rgb(255, 255, 255);
+  text-align: center; /* Center the text in the buttons */
 }
 
+/* Additional styles for hover and active states on buttons if needed */
 .btn:hover {
-  background-color: #D3D3D3;
+  background-color: rgba(211, 211, 211, 0.85); /* Semi-transparent on hover */
 }
 
 .btn:active {
-  background-color: Gray;
+  background-color: rgba(169, 169, 169, 0.85); /* Semi-transparent on active */
   transform: translateY(4px);
 }
 

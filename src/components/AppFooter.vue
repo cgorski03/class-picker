@@ -10,21 +10,22 @@ export default{
 </script>
 
 <style>
- 
-.footer div{
-  position: fixed;
+.footer {
+  position: fixed; /* Make footer stay at bottom */
   left: 0;
-  width: 100%;
-  height: 40px;
+  right: 0;
   bottom: 0;
+  background-color: #151E3D; /* Dark blue background */
+  color: white; /* Ensure text color is white */
+  text-align: center;
+  padding: 10px 0;
+  border-top: 1px solid Black;
+  z-index: 1000; /* Ensure it's above other content */
 }
 
-.footer h3{
-  color: White;
-  text-align: center;
-  background-color: #151E3D;
-  padding: 25px;
-  border-top: 1px solid Black;
+.footer h3 {
+  margin: 0; /* Remove default margin */
+  padding: 10px; /* Adjust padding to your preference */
 }
 
 </style>

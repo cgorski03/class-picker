@@ -70,84 +70,86 @@ const login = () => {
 
 <style>
 
+/* Reset some default styles and apply a full height to the body and main container */
+html, body {
+  height: 100%; /* Full height */
+  margin: 0; /* Reset default margin */
+  padding: 0; /* Reset default padding */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+#app {
+  min-height: 100%; /* Ensure it covers at least the viewport height */
+  background-image: url('C:\Users\archi\project2102\Group-Project\src\views\UCONNLOGIN.jpg'); /* Add the correct path */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Background stays fixed during scroll */
+}
+
 main {
   display: flex;
-  flex-direction:row;  
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center;
+  align-items: center;
+  padding-top: 60px; /* Height of header */
+  padding-bottom: 60px; /* Height of footer */
+  flex-grow: 1; /* Allow main content to grow and fill space */
 }
 
-img {
-  display: block;
-  margin-top: 50px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: auto;
-}
 
 .middle {
-  margin-top: 35px;
-  width: 34%;
-  margin-bottom: 35px;
-  background-color: #151E3D;
+  margin-top: 95px;
+  width: 30%; /* Adjust width as needed */
+  background-color: rgba(255, 255, 255, 0.70); /* Semi-transparent background */
+  padding: 40px;
+  border-radius: 15px; /* Rounded corners for the form */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .title {
   text-align: center;
   margin-bottom: 25px;
   font-size: 30px;
-  font-weight: bold;
-  background-color: #151E3D;
-  color: white;
-  padding: 25px;
+  color: #151E3D; /* Adjusted the color for contrast against the light background */
 }
 
-.upFormat{
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 25px;
-  display: block;
+.upFormat {
+  width: 100%; /* Full width of the form */
+  font-size: 18px; /* Adjusted for better readability */
+  padding: 10px;
+  border: 1px solid #ccc; /* Subtle border */
+  border-radius: 8px; /* Rounded corners for the input fields */
+  margin-bottom: 20px; /* Space between the input fields */
 }
 
 .upText {
-  padding: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  color: White;
-  font-weight: semi-bold;
-  font-size: 25px;
-  text-align: center;
+  font-size: 18px;
+  color: #151E3D; /* Matching the title */
+  margin-bottom: 5px;
 }
 
-.btn{
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 100px;
-  display: block;
-  color: Black;
-  background-color: White;
-  border: 2px solid Black;
-  font-weight: bold;
-  font-size: 20px; 
-  padding: 10px 40px;
+.btn {
+  width: 100%; /* Full width of the form */
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: #151E3D;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
 }
 
 .btn:hover {
-  background-color: Gray;
+  background-color: #2a346d; /* Slightly darker on hover */
 }
 
-.loginButtonWriting {
-  font-weight: bold;
-  font-size: 20px; 
-  padding: 15px 40px;
+/* Hide left and right sections, or repurpose them if needed */
+.left, .right {
+  display: none;
 }
 
-.left {
-  width: 33%;
-}
+/* Add your additional styles here */
 
-.right {
-  width: 33%;
-}
 
 </style>

@@ -10,19 +10,21 @@
 
 /* give the header itself a background color, a border, and add some padding to the content */
 .app-header {
-  background-color: White;
-  border-bottom: 1px solid Black;
-  padding: 1.5rem;
+  position: fixed; /* Make header stay at top */
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #151E3D; /* Dark blue background */
+  color: white !important; /* White text color */
+  text-align: center;
+  padding: 1rem;
+  z-index: 1000; /* Ensure it's above other content */
 }
 
-/*making the text in a blue box */
-/* make the title within the header a larger and bolder font */
 .app-header h1 {
-  color: white;
-  text-align: center;
-  background-color: #151E3D;
+  margin: 0; /* Remove default margin */
   font-size: 1.6rem;
   font-weight: bold;
-  padding: 0.5rem;
 }
+
 </style>
