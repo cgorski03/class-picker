@@ -9,6 +9,10 @@
       <template v-if="!isAuthenticated">
         <LoginButton />
       </template>
+      <template v-if="isAuthenticated">
+        <ContinueButton />
+      </template>
+      
     </div>
 
     <div class = "right">
@@ -23,6 +27,7 @@ import LoginButton from '@/components/buttons/login-button.vue'
 import { useAuth0} from '@auth0/auth0-vue';
 import versionState from '../state/version';
 import { useRouter } from 'vue-router';
+import ContinueButton from '@/components/buttons/continue-button.vue'
 
 const { isAuthenticated } = useAuth0();
 const router = useRouter();

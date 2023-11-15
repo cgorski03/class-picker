@@ -20,18 +20,24 @@
 </template>
 
 <script setup>
+import { watch } from 'vue';
 import { routerKey } from "vue-router";
 import MainMenu from "../components/MainMenu.vue";
-import versionState from "../state/version";
 import { useRouter } from 'vue-router';
 import { useAuth0 } from "@auth0/auth0-vue";
 
 const { user } = useAuth0();
 const { isAuthenticated } = useAuth0();
-if(!isAuthenticated){
-  const router = useRouter();
-  router.push('/');
-}
+const router = useRouter();
+
+
+// Watch for changes in the user object
+watch(user, (newUser) => {
+  if (newUser && newUser.nickname) {
+    // User information is available, perform actions as needed
+    console.log(newUser.nickname);
+  }
+});
 
 </script>
 <style scoped>
