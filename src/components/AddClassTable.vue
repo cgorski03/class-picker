@@ -1,5 +1,5 @@
 <template>
-  <div id="tableLayout">
+  <div id ="tableLayout">
     <div id="classSearch">
       <nav>
         <ul class="AddClassTable">
@@ -35,7 +35,7 @@ import { ref } from 'vue';
 
 let yourclasseslist = ref([]);
 
-
+//takes in an array of classes
 const props = defineProps({
   classes: {
     type: Array,
@@ -43,7 +43,7 @@ const props = defineProps({
   },
 });
 
-//const { emit } = defineEmits(['sendclass']);
+//this handles the data sent up by the child component
 
 const loadYourClasses = (yourCurrentClassList) => {
   console.log('loadYourClasses called with:', yourCurrentClassList);

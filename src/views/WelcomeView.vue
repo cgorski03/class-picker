@@ -31,6 +31,8 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
+//sets state based on button pressed
+//and sends student to the login page
 let toLogin = (isStudentButtonPressed) => {
 
   console.log("isStudentButtonPressed: " + isStudentButtonPressed);

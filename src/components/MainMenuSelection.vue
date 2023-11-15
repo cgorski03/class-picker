@@ -16,6 +16,7 @@ const props = defineProps({
     path:String,
 })
 
+//routes on button click to corresponding path 
 const navigate = () => {
 
   if(props.name === "Sign Out"){

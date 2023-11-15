@@ -5,21 +5,23 @@
 </template>
 
 <script setup>
-import { ref, defineEmits } from 'vue';
+import { ref } from 'vue';
 
 const yourCurrentClassList = ref([])
 
-const emit  = defineEmits(['sendclass']); 
-
+//take in data from Class class
 const props = defineProps({
   classData: {
     type: Object, // Assuming classData is an object
     required: true,
   },
-})
+});
 
+const emit = defineEmits("sendclass", yourCurrentClassList)
+
+//add a class to user schedule and return the users current schedule
 const addclass = async () => {
-  // Where you can implement the logic to add the class to the user's classes table
+
 
   const url = "https://4jui141iri.execute-api.us-east-1.amazonaws.com/dev/class"
   try{
@@ -38,16 +40,13 @@ const addclass = async () => {
     if(response.ok){
         console.log("You added the class");
         
+        //Parsing through the response text to get string list of class names
         const responseData = JSON.parse(responseText);
 
+        //reseting list to empty for the next time you add a class
         yourCurrentClassList.value = [];
-
-        console.log('API Response:', responseData);
-
-        yourCurrentClassList.value=responseData;
-
+        yourCurrentClassList.value =responseData;
         emit("sendclass", yourCurrentClassList.value)
-        
     }
     else {
       console.log("Error response:", responseText);
