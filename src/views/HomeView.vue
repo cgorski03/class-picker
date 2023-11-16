@@ -41,6 +41,7 @@ watch(user, (newUser) => {
 
 </script>
 <style scoped>
+
 .home {
   padding: 0;
   display: flex;
