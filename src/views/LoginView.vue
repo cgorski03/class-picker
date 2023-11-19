@@ -73,19 +73,11 @@ const login = () => {
 <style>
 
 /* Reset some default styles and apply a full height to the body and main container */
-html, body {
-  height: 100%; /* Full height */
-  margin: 0; /* Reset default margin */
+html, body, #app {
+  height: 100%;
+  margin: 0;
   padding: 0; /* Reset default padding */
   overflow-x: hidden; /* Prevent horizontal scroll */
-}
-
-#app {
-  min-height: 100%; /* Ensure it covers at least the viewport height */
-  background-image: url('C:\Users\archi\project2102\Group-Project\src\views\UCONNLOGIN.jpg'); /* Add the correct path */
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; /* Background stays fixed during scroll */
 }
 
 main {
@@ -96,8 +88,11 @@ main {
   padding-top: 60px; /* Height of header */
   padding-bottom: 60px; /* Height of footer */
   flex-grow: 1; /* Allow main content to grow and fill space */
+  background-image: url('C:\Users\archi\Downloads\UCONNLOGIN.jpg'); /* Add your local path here */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Background stays fixed during scroll */
 }
-
 
 .middle {
   margin-top: 95px;

@@ -102,7 +102,7 @@ const search = async () => {
 
 <style scoped>
 /* Main layout */
-/* Main layout */
+
 main {
   display: flex;
   flex-direction: row;
