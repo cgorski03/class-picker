@@ -25,8 +25,8 @@
             </div>
           </form>
         </div>
-        <div>
-          <ClassTable :classes="classList"></ClassTable>
+        <div id ="tablediv">
+          <ClassTable :classes="classList" :loading="loading"></ClassTable>
         </div>
       </div>
     </div>
@@ -38,6 +38,7 @@ import MainMenu from "../components/MainMenu.vue";
 import ClassTable from "../components/AddClassTable.vue";
 import { ref, reactive } from "vue";
 
+let loading = ref(false)
 //stores the user input
 let className = ref("");
 
@@ -55,6 +56,8 @@ class Class {
 
 //searches for classes in the databased by name
 const search = async () => {
+  classList.value = [];
+  loading.value =true;
   try {
     // Encode the className parameter
     const encodedClassName = encodeURIComponent(className.value);
@@ -72,7 +75,7 @@ const search = async () => {
       const responseData = JSON.parse(responseText);
 
       // Clear existing classList
-      classList.value = [];
+      
 
       // Loop through the responseData and create instances of Class
       for (const key in responseData) {
@@ -96,15 +99,19 @@ const search = async () => {
   } catch (error) {
     console.error("Error during fetch:", error);
   }
+  loading.value =false;
 };
 
 </script>
 
 <style scoped>
 .home {
+  overflow: hidden;
   padding: 0;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  max-height: 100%;
 }
 
 .home h2 {
@@ -116,18 +123,22 @@ const search = async () => {
 }
 
 .menuContent {
+  height: auto;
   width: 20%;
   background-color: #b90e0a;
   border: 2px black;
 }
 
 .mainContent {
+  min-height: max-content;
+  height: auto;
   width: 80%;
 }
 
 main {
   display: flex;
   flex-direction: row;
+  height: 100vh;
 }
 
 .searchbar {
@@ -179,5 +190,12 @@ main {
 
 .searchbar button:active {
   background-color: darkgray;
+}
+
+#tablediv{
+  align-self: center;
+  width: 90%;
+  overflow: hidden;
+  height: auto;
 }
 </style>
