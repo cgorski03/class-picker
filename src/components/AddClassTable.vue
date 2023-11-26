@@ -24,7 +24,7 @@
             </li>
             <Loading v-if="yourclassesloader"/>
             <li id="yourclassitem" v-for="c in yourclasseslist">
-              <p>{{ c }}</p>
+              <p style="color: black;">{{ c }}</p>
             </li>
           </ul>
         </nav>
@@ -75,11 +75,11 @@ const loadingHandler = () => {
   margin-right: auto;
   height: 100%;
   width: 94%;
-  background-color: white;
+  background-color: #151E3D;
   display: flex;
   flex-direction: row;
-  overflow: auto;
 }
+
 #tableborder{
   padding-top: 3%;
   padding-bottom: 3%;
@@ -89,15 +89,21 @@ const loadingHandler = () => {
 }
 
 #classSearch{
-  width: 70%;
+  width: 67.5%;
+  background-color: white;
+  margin-right: 2.5%;
+  overflow: auto;
 }
 
 #yourClasses{
   width: 30%;
+  background-color: white;
+  overflow: auto;
 }
 
 #yourclassitem{
-  border: 2px black;
+  border-bottom: 1px solid black;
+  padding: 10px;
 }
 
 .AddClassTable{
@@ -108,4 +114,5 @@ const loadingHandler = () => {
 #classtableitemtitle{
   color: black;
 }
+
 </style>
