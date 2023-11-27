@@ -29,12 +29,13 @@ import { useAuth0 } from "@auth0/auth0-vue";
 const { user } = useAuth0();
 const { isAuthenticated } = useAuth0();
 const router = useRouter();
-
+console.log(user.nickname)
 
 // Watch for changes in the user object
 watch(user, (newUser) => {
   if (newUser && newUser.nickname) {
     // User information is available, perform actions as needed
+    console.log(newUser['dev-qtfdl3mznfynnex6.us.auth0.com/type']) //returns s if student
     console.log(newUser.nickname);
   }
 });
