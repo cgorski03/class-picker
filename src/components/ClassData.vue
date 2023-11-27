@@ -6,8 +6,11 @@
 
 <script setup>
 import { ref } from 'vue';
+import { watch } from 'vue';
+import { useAuth0 } from "@auth0/auth0-vue";
 
-const yourCurrentClassList = ref([])
+const yourCurrentClassList = ref([]);
+// Watch for changes in the user object
 
 //take in data from Class class
 const props = defineProps({
@@ -27,10 +30,11 @@ const addclass = async () => {
   emit("toggleloader");
   const url = "https://4jui141iri.execute-api.us-east-1.amazonaws.com/dev/class"
   try{
+    
     const response = await fetch(url, {
           method: "POST",
           body:JSON.stringify({
-            "username": "jak19018",
+            "username": "cgorski03",
             "course": props.classData.classTitle
           }),
           headers: {

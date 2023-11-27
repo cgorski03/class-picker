@@ -7,7 +7,7 @@
     <div class = "mainContent">
       <div class="home">
         <div class = "formatText">
-          <h2>{{versionState.getHomePageTitle.value}}</h2>
+          <h2>Welcome, {{user.nickname}}!</h2>
         </div>
         <div class = "formatImage">
           <!-- Need to fix so it resizes and works on different display -->
@@ -20,11 +20,29 @@
 </template>
 
 <script setup>
+import { watch } from 'vue';
+import { routerKey } from "vue-router";
 import MainMenu from "../components/MainMenu.vue";
-import versionState from "../state/version";
+import { useRouter } from 'vue-router';
+import { useAuth0 } from "@auth0/auth0-vue";
+
+const { user } = useAuth0();
+const { isAuthenticated } = useAuth0();
+const router = useRouter();
+console.log(user.nickname)
+
+// Watch for changes in the user object
+watch(user, (newUser) => {
+  if (newUser && newUser.nickname) {
+    // User information is available, perform actions as needed
+    console.log(newUser['dev-qtfdl3mznfynnex6.us.auth0.com/type']) //returns s if student
+    console.log(newUser.nickname);
+  }
+});
 
 </script>
 <style scoped>
+
 .home {
   padding: 0;
   display: flex;
