@@ -11,3 +11,10 @@
   import AppHeader from "./components/AppHeader.vue";
   import AppFooter from "./components/AppFooter.vue";
 </script>
+
+<style>
+#app-wrapper{
+  height: 100%;
+  width: 100%;
+}
+</style>
