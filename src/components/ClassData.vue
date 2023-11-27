@@ -1,6 +1,6 @@
 <template>
   <button class="item" @click.prevent="addclass">
-    <p>{{ classData.classTitle }} {{ classData.classCA }} {{ classData.classCANum }} {{ classData.classSubj }}</p>
+    <p style="color: black;">{{ classData.classTitle }} {{ classData.classCA }} {{ classData.classCANum }} {{ classData.classSubj }}</p>
   </button>
 </template>
 
@@ -20,12 +20,14 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits("sendclass", yourCurrentClassList)
+const emit = defineEmits("sendclass", "toggleloader")
 
 //add a class to user schedule and return the users current schedule
 const addclass = async () => {
 
-
+  yourCurrentClassList.value = [];
+  emit("sendclass", yourCurrentClassList.value)
+  emit("toggleloader");
   const url = "https://4jui141iri.execute-api.us-east-1.amazonaws.com/dev/class"
   try{
     
@@ -48,9 +50,10 @@ const addclass = async () => {
         const responseData = JSON.parse(responseText);
 
         //reseting list to empty for the next time you add a class
-        yourCurrentClassList.value = [];
+       
         yourCurrentClassList.value =responseData;
-        emit("sendclass", yourCurrentClassList.value)
+        emit("toggleloader");
+        emit("sendclass", yourCurrentClassList.value);
     }
     else {
       console.log("Error response:", responseText);
@@ -65,8 +68,7 @@ const addclass = async () => {
 <style scoped>
 .item {
   border-bottom: 1px solid black;
-  width: 80%;
-  margin-right: auto;
+  width: 100%;
   padding: 20px;
 }
 
