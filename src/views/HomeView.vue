@@ -47,6 +47,7 @@ watch(user, (newUser) => {
   padding: 0;
   display: flex;
   flex-direction: column;
+  height: auto;
 }
 
 .home h2 {
@@ -67,15 +68,25 @@ img {
   width: 20%;
   background-color: #B90E0A;
   border: 2px black;
+  height: auto;
+  
 }
 
+.formatText{
+  height: auto;
+}
+.formatImage{
+  height: auto;
+}
 .mainContent{
+  height: auto;
   width: 80%;
 }
 
 main{
   display: flex;
   flex-direction:row;  
+  height: 100vh;
 }
 
 </style>

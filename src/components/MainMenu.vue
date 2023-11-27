@@ -28,6 +28,10 @@ let menuOptions = [
 
 <style>
 
+nav{
+  height: 100%;
+}
+
 .menu{
     list-style-type: none;
 }
@@ -41,9 +45,4 @@ let menuOptions = [
     border-bottom: 1px solid Black;
 }
 
-.emptySpace {
-    background: #B90E0A;
-    width: 100%;
-    padding: auto;
-}
 </style>
