@@ -6,12 +6,14 @@
   
       <div class = "mainContent">
         <div class="home">
-          <div class = "formatText">
+          <div style="height: fit-content;">
             <h2>Tutorial</h2>
           </div>
-          <div class = "formatImage">
-            <!-- Need to fix so it resizes and works on different display -->
-            <img src ="../assets/images/logo6.jpg" alt="HusckyLogo" width="550" height="366">
+          <div id="undertitle">
+            <div id="tutorialstart">
+              <p style="color: white; font-size: 25px; margin-bottom: 50px;">Welcome to the {{versionName}} Tutorial, Lets get started!</p>
+              <button style="padding: 20px 40px; border-radius: 50px; font-weight: 500;">Continue</button>
+            </div>
           </div>
         </div>
       </div>
@@ -22,10 +24,39 @@
   <script setup>
   import MainMenu from "../components/MainMenu.vue";
   import versionState from "../state/version";
+  import {ref} from 'vue';
+  
+  let versionName = ref("")
+
+  if (versionState.getVersion.value){
+    versionName.value = "student";
+  }
+  else{
+    versionName.value = "teacher";
+  }
   
   </script>
   <style scoped>
+  #undertitle{
+    height: 100%; 
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #tutorialstart{
+    height: 300px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px; 
+    background-color: #151E3D
+  }
   .home {
+    height: 100vh;
+    width: 100%;
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -38,12 +69,7 @@
     color: white;
     padding: 25px;
   }
-  
-  img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
+
   
   .menuContent {  
     width: 20%;
@@ -53,9 +79,12 @@
   
   .mainContent{
     width: 80%;
+    height: 100%;
   }
   
   main{
+    height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction:row;  
   }

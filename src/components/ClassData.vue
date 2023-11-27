@@ -34,7 +34,7 @@ const addclass = async () => {
     const response = await fetch(url, {
           method: "POST",
           body:JSON.stringify({
-            "username": "cgorski03",
+            "username": "jak19018",
             "course": props.classData.classTitle
           }),
           headers: {
