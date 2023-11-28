@@ -6,15 +6,13 @@
 
     <div class = "middle">
       <h2 class = "title">Welcome Huskies</h2>
+      <template v-if="!isAuthenticated">
+        <LoginButton />
+      </template>
+      <template v-if="isAuthenticated">
+        <ContinueButton />
+      </template>
       
-      <h2 class = "title2">Choose an Option Below</h2>
-      
-      <button class="btn" v-on:click.prevent="toLogin(true)">
-        <h4>Student</h4>
-      </button>
-      <button class="btn" v-on:click.prevent="toLogin(false)">
-        <h4>Teacher</h4>
-      </button>
     </div>
 
     <div class = "right">
@@ -25,21 +23,14 @@
 </template>
 
 <script setup>
-
+import LoginButton from '@/components/buttons/login-button.vue'
+import { useAuth0} from '@auth0/auth0-vue';
 import versionState from '../state/version';
 import { useRouter } from 'vue-router';
+import ContinueButton from '@/components/buttons/continue-button.vue'
 
+const { isAuthenticated } = useAuth0();
 const router = useRouter();
-
-//sets state based on button pressed
-//and sends student to the login page
-let toLogin = (isStudentButtonPressed) => {
-
-  console.log("isStudentButtonPressed: " + isStudentButtonPressed);
-  versionState.setup(isStudentButtonPressed);
-  console.log("student version cookie: " + versionState.getVersion.value);
-  router.push('/login');
-}
 
 </script>
 

@@ -6,8 +6,10 @@
 
 <script setup>
 import { ref } from 'vue';
-
-const yourCurrentClassList = ref([])
+import { watch } from 'vue';
+import versionState from '../state/version';
+const yourCurrentClassList = ref([]);
+// Watch for changes in the user object
 
 //take in data from Class class
 const props = defineProps({
@@ -27,10 +29,11 @@ const addclass = async () => {
   emit("toggleloader");
   const url = "https://4jui141iri.execute-api.us-east-1.amazonaws.com/dev/class"
   try{
+    
     const response = await fetch(url, {
           method: "POST",
           body:JSON.stringify({
-            "username": "jak19018",
+            "username": versionState.getuserID.value,
             "course": props.classData.classTitle
           }),
           headers: {

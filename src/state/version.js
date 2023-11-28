@@ -3,14 +3,17 @@ import { ref, computed } from "vue";
 const state = ref({
   //did a student or teacher log in
   isStudent: ref(false),
+  userID: ref(''),
 
   //Menu options state that is equal to a list of options based on student or teacher state
   menuOptions: JSON.parse(localStorage.getItem("key")) || [],
 });
 
-function setup(isStudentButtonPressed) {
-  state.value.isStudent = isStudentButtonPressed;
-  state.value.menuOptions = isStudentButtonPressed
+function setup(isStudent, userID) {
+  state.value.isStudent = isStudent;
+  state.value.userID = userID;
+  console.log(userID)
+  state.value.menuOptions = isStudent
     ? [
         { option: "Add Classes", id: 4, path:"/addclasses" },
         { option: "Drop Classes", id: 5, path:"/dropclasses" },
@@ -33,6 +36,7 @@ function clearLocalStorage() {
 }
 
 const getVersion = computed(() => state.value.isStudent);
+const getuserID = computed(() => state.value.userID);
 const getMenuOptions = computed(() => state.value.menuOptions);
 const getLoginTitle = computed(() => state.value.isStudent ? "Student Login" : "Teacher Login");
 const getHomePageTitle = computed(() => state.value.isStudent ? "Welcome to the Student Home Page" : "Welcome to the Teacher Home Page");
@@ -46,4 +50,5 @@ export default {
   getVersion,
   getLoginTitle,
   getHomePageTitle,
+  getuserID,
 };
