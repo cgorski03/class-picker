@@ -7,7 +7,7 @@
     <div class = "mainContent">
       <div class="home">
         <div class = "formatText">
-          <h2>Welcome, {{user.nickname}}!</h2>
+          <h2>Welcome, {{user.email}}!</h2>
         </div>
         <div class = "formatImage">
           <!-- Need to fix so it resizes and works on different display -->
@@ -25,6 +25,7 @@ import { routerKey } from "vue-router";
 import MainMenu from "../components/MainMenu.vue";
 import { useRouter } from 'vue-router';
 import { useAuth0 } from "@auth0/auth0-vue";
+import versionState from '../state/version';
 
 const { user } = useAuth0();
 const { isAuthenticated } = useAuth0();
@@ -35,8 +36,10 @@ console.log(user.nickname)
 watch(user, (newUser) => {
   if (newUser && newUser.nickname) {
     // User information is available, perform actions as needed
-    console.log(newUser['dev-qtfdl3mznfynnex6.us.auth0.com/type']) //returns s if student
-    console.log(newUser.nickname);
+    let isStudent = newUser['dev-qtfdl3mznfynnex6.us.auth0.com/type'] == 's' ? true : false  //setup isStudent
+    let email = newUser.email
+    console.log(email)
+    versionState.setup(isStudent, email);
   }
 });
 
