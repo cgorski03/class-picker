@@ -10,7 +10,6 @@ import WelcomeView from "../views/WelcomeView.vue";
 import AddClasses from "../views/AddClassesView.vue";
 import DropClasses from "../views/DropClassesView.vue";
 import Schedule from "../views/ScheduleView.vue";
-import Tutorial from "../views/TutorialView.vue";
 
 
 const router = createRouter({
@@ -32,11 +31,6 @@ const router = createRouter({
       path: "/",
       name: "welcome",
       component: WelcomeView,
-     },
-     {
-      path: "/tutorial",
-      name: "tutorial",
-      component: Tutorial,
      },
      {
       path: "/addclasses",

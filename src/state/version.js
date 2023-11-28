@@ -12,14 +12,12 @@ function setup(isStudentButtonPressed) {
   state.value.isStudent = isStudentButtonPressed;
   state.value.menuOptions = isStudentButtonPressed
     ? [
-        { option: "Tutorial", id: 1, path:"/tutorial" },
         { option: "Add Classes", id: 4, path:"/addclasses" },
         { option: "Drop Classes", id: 5, path:"/dropclasses" },
         { option: "View Schedule", id: 2, path:"/schedule" },
         { option: "Sign Out", id: 3, path:"/" },
       ]
     : [
-        { option: "Tutorial", id: 1, path:"/tutorial" },
         { option: "View Schedule", id: 2, path:"/schedule" },
         { option: "Sign Out", id: 3, path:"/" },
       ];
