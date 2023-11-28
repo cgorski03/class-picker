@@ -90,12 +90,6 @@
     padding: 25px;
   }
   
-  img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
   .menuContent {  
     width: 20%;
     background-color: #B90E0A;

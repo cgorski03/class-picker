@@ -137,6 +137,7 @@ const dropSelectedClasses = async () => {
     height: 400px;
     width: 100%;
     background-color: #151E3D;
+
   }
   /* The container */
 .container {
