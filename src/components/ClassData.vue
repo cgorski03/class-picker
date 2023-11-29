@@ -1,6 +1,7 @@
 <template>
-  <button class="item" @click.prevent="addclass">
-    <p style="color: black;">{{ classData.classTitle }} {{ classData.classCA }} {{ classData.classCANum }} {{ classData.classSubj }}</p>
+  <button class="item" @click.prevent="addclass" style="position: relative;">
+    <p style="color: black;">{{ classData.classSubj }} {{ classData.classCANum }}: {{ classData.classTitle }}</p>
+    <span class="checkmark" v-if="classData.isCompatible">✓</span>
   </button>
 </template>
 
@@ -28,6 +29,8 @@ const addclass = async () => {
   emit("sendclass", yourCurrentClassList.value)
   emit("toggleloader");
   const url = "https://4jui141iri.execute-api.us-east-1.amazonaws.com/dev/class"
+
+
   try{
     
     const response = await fetch(url, {
@@ -56,15 +59,25 @@ const addclass = async () => {
     }
     else {
       console.log("Error response:", responseText);
+      console.log(versionState.getuserID.value)
     }
   }
   catch (error) {
+
     console.error("Error during fetch:", error);
   }
 }
 </script>
 
 <style scoped>
+.checkmark {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: black; /* Change the color as needed */
+    font-size: 15px; /* Adjust the font size as needed */
+    font-weight: bold;
+  }
 .item {
   border-bottom: 1px solid black;
   width: 100%;
