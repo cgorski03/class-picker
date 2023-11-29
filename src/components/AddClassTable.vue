@@ -32,7 +32,6 @@
     </div>
   </div>
 </template>
-
 <script setup>
 import ClassData from "../components/ClassData.vue";
 import { ref } from 'vue';

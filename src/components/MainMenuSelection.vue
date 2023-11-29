@@ -7,7 +7,8 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import versionState from '../state/version'
-
+import { useAuth0} from '@auth0/auth0-vue';
+const { logout } = useAuth0();
 
 const router = useRouter();
 
@@ -20,7 +21,12 @@ const props = defineProps({
 const navigate = () => {
 
   if(props.name === "Sign Out"){
-    versionState.clearLocalStorage();
+    console.log("registering button ppress");
+    logout({
+        logoutParams: {
+            returnTo: 'http://localhost:5173/'
+        },
+    });
   }
 
   router.push(props.path);
