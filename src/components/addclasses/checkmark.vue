@@ -9,7 +9,7 @@
   }
   
   .checkmark {
-    position: absolute;
+    position: relative;
     top: 5px;
     right: 5px;
     color: black; /* Change the color as needed */
@@ -21,7 +21,7 @@
     display: none;
     position: absolute;
     top: -15px; /* Adjust the distance from the checkmark */
-    left: 90%;
+    left: 7%;
     transform: translateX(-50%);
     background-color: #fff; /* Tooltip background color */
     color: #000; /* Tooltip text color */
