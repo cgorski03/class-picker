@@ -17,11 +17,7 @@
                       <Loading v-if="isLoading" />
                       <li v-for="course in classlist" :key="course">
                       <div id="indivisualCourse">
-                          <label class="container">
-                          {{ course }}
-                          <input type="checkbox" v-model="selectedCourses" :value="course">
-                          <span class="checkmark"></span>
-                          </label>
+                        {{ course }}
                       </div>
                       </li>
                   </ul>
@@ -45,7 +41,7 @@
   let isLoading = ref(false);
 
   onMounted(() => {
-    const username = 'jak19018'; // Replace with the actual username
+    const username = versionState.getuserID.value;
     fetchData(username);
   });
 

@@ -26,6 +26,7 @@
   
   <script setup>
   import { ref, onMounted } from 'vue';
+  import versionState from "../state/version"
   import Loading from "./Loading.vue";
 
   let classlist = ref([]);
@@ -60,7 +61,7 @@
 const dropSelectedClasses = async () => {
   isLoading.value = true;
   classlist.value = [];
-  const username = 'jak19018'; // Replace with the actual username
+  const username = versionState.getuserID.value; 
 
   try {
     for (const course of selectedCourses.value) {
@@ -100,7 +101,7 @@ const dropSelectedClasses = async () => {
   
   // Call the Lambda function when the component is mounted
   onMounted(() => {
-    const username = 'jak19018'; // Replace with the actual username
+    const username = versionState.getuserID.value; 
     fetchData(username);
   });
   </script>
