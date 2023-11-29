@@ -7,8 +7,7 @@
 <script setup>
 import { ref } from 'vue';
 import { watch } from 'vue';
-import { useAuth0 } from "@auth0/auth0-vue";
-
+import versionState from '../state/version';
 const yourCurrentClassList = ref([]);
 // Watch for changes in the user object
 
@@ -34,7 +33,7 @@ const addclass = async () => {
     const response = await fetch(url, {
           method: "POST",
           body:JSON.stringify({
-            "username": "jak19018",
+            "username": versionState.getuserID.value,
             "course": props.classData.classTitle
           }),
           headers: {

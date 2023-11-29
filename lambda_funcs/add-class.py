@@ -37,10 +37,10 @@ def lambda_handler(event, context):
     headers = {
         "Access-Control-Allow-Origin": "*",  
         "Access-Control-Allow-Headers": "Content-Type",
-        "Access-Control-Allow-Methods": "POST"
+        "Access-Control-Allow-Methods": "OPTIONS, POST, GET"
     }
     
-    request_data = json.loads(event['body'])
+    request_data = json.loads(json.dumps(event['body']))
     #check if the proper arguments have been provided
     if 'course' not in request_data or 'username' not in request_data:
         return{
@@ -64,7 +64,7 @@ def lambda_handler(event, context):
     response = courseTable.get_item(
         Key={'Title': course_name}  
     )
-
+    
 
     if 'Item' in response:
             #at this point username and class both exist and you can add class to user
@@ -82,7 +82,6 @@ def lambda_handler(event, context):
                 'statusCode': 200,
                 'headers': headers,
                 'body': json.dumps(list(response['Attributes']))
-
         }
 
         else:

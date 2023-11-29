@@ -32,6 +32,7 @@
     </div>
   </div>
 </template>
+
 <script setup>
 import ClassData from "../components/ClassData.vue";
 import { ref } from 'vue';
@@ -82,7 +83,7 @@ const loadingHandler = () => {
 #tableborder{
   padding-top: 3%;
   padding-bottom: 3%;
-  height: 400px;
+  height: 65vh;
   width: 100%;
   background-color: #151E3D;
 }
