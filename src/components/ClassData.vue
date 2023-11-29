@@ -1,7 +1,10 @@
 <template>
   <button class="item" @click.prevent="addclass" style="position: relative;">
     <p style="color: black;">{{ classData.classSubj }} {{ classData.classCANum }}: {{ classData.classTitle }}</p>
-    <span class="checkmark" v-if="classData.isCompatible">✓</span>
+    <checkmark v-if="classData.isCompatible"></checkmark>
+    <!--
+      <span class="checkmark" v-if="classData.isCompatible" aria-label="Class is compatible">✓</span>
+    -->
   </button>
 </template>
 
@@ -9,6 +12,7 @@
 import { ref } from 'vue';
 import { watch } from 'vue';
 import versionState from '../state/version';
+import checkmark from './addclasses/checkmark.vue'
 const yourCurrentClassList = ref([]);
 // Watch for changes in the user object
 
@@ -70,14 +74,8 @@ const addclass = async () => {
 </script>
 
 <style scoped>
-.checkmark {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    color: black; /* Change the color as needed */
-    font-size: 15px; /* Adjust the font size as needed */
-    font-weight: bold;
-  }
+
+
 .item {
   border-bottom: 1px solid black;
   width: 100%;
