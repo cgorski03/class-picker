@@ -10,6 +10,7 @@ import WelcomeView from "../views/WelcomeView.vue";
 import AddClasses from "../views/AddClassesView.vue";
 import DropClasses from "../views/DropClassesView.vue";
 import Schedule from "../views/ScheduleView.vue";
+import TutorialView from "../views/TutorialView.vue";
 
 
 const router = createRouter({
@@ -66,6 +67,11 @@ const router = createRouter({
       path: "/fetch",
       name: "fetch",
       component: FetchView,
+    },
+    {
+      path: "/tutorial",
+      name: "tutorial",
+      component: TutorialView,
     },
   ],
 });
