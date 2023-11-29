@@ -1,18 +1,15 @@
 <template>
   <button class="item" @click.prevent="addclass" style="position: relative;">
     <p style="color: black;">{{ classData.classSubj }} {{ classData.classCANum }}: {{ classData.classTitle }}</p>
-    <checkmark v-if="classData.isCompatible"></checkmark>
-    <!--
-      <span class="checkmark" v-if="classData.isCompatible" aria-label="Class is compatible">✓</span>
-    -->
+    <course_symbol :isCompatible="classData.isCompatible" :course="classData.conflictingCourse"></course_symbol>
   </button>
 </template>
 
 <script setup>
 import { ref } from 'vue';
-import { watch } from 'vue';
 import versionState from '../state/version';
-import checkmark from './addclasses/checkmark.vue'
+import course_symbol from './addclasses/course_symbol.vue';
+
 const yourCurrentClassList = ref([]);
 // Watch for changes in the user object
 
