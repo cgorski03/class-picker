@@ -18,19 +18,18 @@ export async function check_compatibility(classList, user){
       .then(data => {
         // Handle the response data
         let coursesArray = JSON.parse(data.courses);
-        console.log(coursesArray);
         for(const classInstance of classList.value){
           for(const course of coursesArray){
               if(!(classInstance.daysMeet == 'TR') != (course.days_meet == 'TR')){
-                  console.log(classInstance.daysMeet, course.days_meet )
                   if(classInstance.startTime == course.start_time ||  classInstance.endTime == course.start_time || classInstance.startTime == course.end_time){
+                      classInstance.conflictingCourse = course.Title
+                      console.log(classInstance.conflictingCourse)
                       classInstance.isCompatible = false;
                       break;
                   }else{
                     classInstance.isCompatible = true;
                   }
               }else{
-                  console.log("initial condition wrong")
                   classInstance.isCompatible = true;
               }
           }

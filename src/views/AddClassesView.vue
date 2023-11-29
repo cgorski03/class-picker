@@ -56,6 +56,7 @@ class Class {
     this.startTime = startTime;
     this.endTime = endTime;
     this.isCompatible = ref(false);
+    this.conflictingCourse = ref('')
   }
 }
 
