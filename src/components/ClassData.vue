@@ -1,6 +1,10 @@
 <template>
-  <button class="item" @click.prevent="addclass">
-    <p style="color: black;">{{ classData.classTitle }} {{ classData.classCA }} {{ classData.classCANum }} {{ classData.classSubj }}</p>
+  <button class="item" @click.prevent="addclass" style="position: relative;">
+    <p style="color: black;">{{ classData.classSubj }} {{ classData.classCANum }}: {{ classData.classTitle }}</p>
+    <checkmark v-if="classData.isCompatible"></checkmark>
+    <!--
+      <span class="checkmark" v-if="classData.isCompatible" aria-label="Class is compatible">✓</span>
+    -->
   </button>
 </template>
 
@@ -8,6 +12,7 @@
 import { ref } from 'vue';
 import { watch } from 'vue';
 import versionState from '../state/version';
+import checkmark from './addclasses/checkmark.vue'
 const yourCurrentClassList = ref([]);
 // Watch for changes in the user object
 
@@ -28,6 +33,8 @@ const addclass = async () => {
   emit("sendclass", yourCurrentClassList.value)
   emit("toggleloader");
   const url = "https://4jui141iri.execute-api.us-east-1.amazonaws.com/dev/class"
+
+
   try{
     
     const response = await fetch(url, {
@@ -56,15 +63,19 @@ const addclass = async () => {
     }
     else {
       console.log("Error response:", responseText);
+      console.log(versionState.getuserID.value)
     }
   }
   catch (error) {
+
     console.error("Error during fetch:", error);
   }
 }
 </script>
 
 <style scoped>
+
+
 .item {
   border-bottom: 1px solid black;
   width: 100%;

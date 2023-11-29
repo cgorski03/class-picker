@@ -17,7 +17,6 @@
                 placeholder="Search by keyword"
                 id="className"
                 v-model="className"
-                @keyup.enter="search"
               />
             </div>
             <div id="searchbutton">
@@ -37,6 +36,8 @@
 import MainMenu from "../components/MainMenu.vue";
 import ClassTable from "../components/AddClassTable.vue";
 import { ref, reactive } from "vue";
+import versionState from '../state/version';
+import { check_compatibility } from '../classes/check'
 
 let loading = ref(false)
 //stores the user input
@@ -46,11 +47,15 @@ let className = ref("");
 let classList = ref([]);
 
 class Class {
-  constructor(classTitle, classCA, classCANum, classSubj) {
+  constructor(classTitle, classCA, classCANum, classSubj, daysMeet, startTime, endTime) {
     this.classTitle = classTitle;
     this.classCA = classCA;
     this.classCANum = classCANum;
     this.classSubj = classSubj;
+    this.daysMeet = daysMeet;
+    this.startTime = startTime;
+    this.endTime = endTime;
+    this.isCompatible = ref(false);
   }
 }
 
@@ -76,7 +81,6 @@ const search = async () => {
 
       // Clear existing classList
       
-
       // Loop through the responseData and create instances of Class
       for (const key in responseData) {
         if (Object.hasOwnProperty.call(responseData, key)) {
@@ -86,13 +90,20 @@ const search = async () => {
               item.Title,
               item['CA DESCR'],
               item['CAT NBR'],
-              item.SUBJ
+              item.SUBJ,
+              item.days_meet,
+              item.start_time,
+              item.end_time
             )
           );
+          /*const isCompatible = await check_compatibility(item.Title, versionState.getuserID.value);
+          newClass.isCompatible = isCompatible;
+          */
           classList.value.push(newClass);
         }
       }
-
+      check_compatibility(classList, versionState.getuserID.value);
+      
     } else {
       console.log("Error response:", responseText);
     }
