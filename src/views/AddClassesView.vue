@@ -38,7 +38,7 @@ import ClassTable from "../components/AddClassTable.vue";
 import { ref, reactive } from "vue";
 import versionState from '../state/version';
 import { check_compatibility } from '../classes/check'
-
+import { Class } from '../classes/module'
 let loading = ref(false)
 //stores the user input
 let className = ref("");
@@ -46,19 +46,6 @@ let className = ref("");
 //stores the list of classes to send to the child component
 let classList = ref([]);
 
-class Class {
-  constructor(classTitle, classCA, classCANum, classSubj, daysMeet, startTime, endTime) {
-    this.classTitle = classTitle;
-    this.classCA = classCA;
-    this.classCANum = classCANum;
-    this.classSubj = classSubj;
-    this.daysMeet = daysMeet;
-    this.startTime = startTime;
-    this.endTime = endTime;
-    this.isCompatible = ref(false);
-    this.conflictingCourse = ref('')
-  }
-}
 const refreshHandler = () =>{
   search();
 }
