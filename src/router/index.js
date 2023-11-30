@@ -11,6 +11,8 @@ import AddClasses from "../views/AddClassesView.vue";
 import DropClasses from "../views/DropClassesView.vue";
 import Schedule from "../views/ScheduleView.vue";
 import TutorialView from "../views/TutorialView.vue";
+import { useAuth0 } from "@auth0/auth0-vue";
+
 
 
 const router = createRouter({
@@ -76,4 +78,18 @@ const router = createRouter({
   ],
 });
 
+// Navigation guard
+router.beforeEach((to, from, next) => {
+  const { isAuthenticated } = useAuth0();
+  // Check if the route requires authentication
+    // Check if the user is authenticated
+    if (!isAuthenticated.value && to.path != '/') {
+      alert("You are not authorized to access this page. Please log in first.")
+      // Redirect to the login page or any other appropriate action
+      next('/');
+  } else {
+    // Continue with the navigation
+    next();
+  }
+});
 export default router;
