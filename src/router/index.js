@@ -83,7 +83,7 @@ router.beforeEach((to, from, next) => {
   const { isAuthenticated } = useAuth0();
   // Check if the route requires authentication
     // Check if the user is authenticated
-    if (!isAuthenticated.value && to.path != '/') {
+    if (!isAuthenticated.value && to.path != '/' && to.path != '/home') {
       alert("You are not authorized to access this page. Please log in first.")
       // Redirect to the login page or any other appropriate action
       next('/');
