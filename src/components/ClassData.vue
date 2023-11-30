@@ -35,7 +35,7 @@ const addclass = async () => {
       throw new Error("This class is not compatible with ", props.classData.conflictingCourse);
     }
   }catch(error){
-    alert("This class is not compatible with " + props.classData.classTitle + ". Please edit your schedule and try again.");
+    alert("This class is not compatible with " + props.classData.conflictingCourse + ". Please edit your schedule and try again.");
     emit("toggleloader");
     return;
   }
