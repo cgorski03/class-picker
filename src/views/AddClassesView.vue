@@ -9,22 +9,20 @@
         <div class="formatText">
           <h2>Add Classes</h2>
         </div>
-        <div>
-          <form class="searchbar">
-            <div id="searchfield">
-              <input
-                type="text"
-                placeholder="Search by keyword"
-                id="className"
-                v-model="className"
-              />
-            </div>
-            <div id="searchbutton">
-              <button @click.prevent="search"></button>
-            </div>
-          </form>
-        </div>
-        <div id ="tablediv">
+        <form class="searchbar">
+          <div id="searchfield">
+            <input
+              type="text"
+              placeholder="Search by keyword"
+              id="className"
+              v-model="className"
+            />
+          </div>
+          <div id="searchbutton">
+            <button @click.prevent="search"></button>
+          </div>
+        </form>
+        <div id="tablediv">
           <ClassTable @refresh="refreshHandler" :classes="classList" :loading="loading"></ClassTable>
         </div>
       </div>
@@ -112,27 +110,28 @@ const search = async () => {
   display: flex;
   flex-direction: column;
   height: 100%;
-  max-height: 100%;
+  background-color: #A9A9A9;
 }
 
 .home h2 {
   text-align: center;
   font-size: 1.5rem;
-  background-color: #151e3d;
+  background-color: #151E3D; /* Blue background color */
   color: white;
-  padding: 25px;
+  padding: 1rem; /* Adjusted padding */
+  margin: 0;
 }
 
 .menuContent {
-  height: auto;
+  height: 100%;
   width: 20%;
   background-color: #b90e0a;
-  border: 2px black;
+  border: 2px solid black;
 }
 
 .mainContent {
-  min-height: max-content;
-  height: auto;
+  min-height: 100%;
+  height: 100%;
   width: 80%;
 }
 
@@ -143,60 +142,53 @@ main {
 }
 
 .searchbar {
-  background-color: #151e3d;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  margin-left: 60px;
-  margin-right: 60px;
-  padding: 30px;
+  background-color: #3A3B3C; /* Light background color */
+  margin: 30px auto;
+  padding: 1rem; /* Adjusted padding */
   width: 90%;
   display: flex;
   flex-direction: row;
+  align-items: center; /* Align items vertically */
 }
+
 .searchbar #searchfield {
-  margin-left: 120px;
-  width: 75%;
+  flex-grow: 1; /* Allow the input to grow and fill available space */
+  margin-right: 1rem; /* Added margin */
 }
 
 .searchbar input {
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 30px;
-  display: block;
+  font-size: 1rem; /* Adjusted font size */
+  padding: 0.5rem; /* Adjusted padding */
 }
 
 .searchbar input::placeholder {
   text-align: center;
-  color: black;
-  font-weight: 500;
+  color: #7f8c8d; /* Light text color */
 }
+
 .searchbar input:hover {
-  background-color: lightgray;
+  background-color: #dfe6e9; /* Light background color on hover */
 }
 
 .searchbar button {
-  border-radius: 15%;
+  border-radius: 50%;
   background: url("../assets/images/search.webp") no-repeat scroll 0 0 transparent;
-  background-size: 50px;
+  background-size: 30px; /* Adjusted background size */
   color: #000000;
   cursor: pointer;
-  padding: 25px 25px;
-  border: 1px white;
+  padding: 0.75rem; /* Adjusted padding */
+  border: 1px solid white; /* Adjusted border color */
 }
 
 .searchbar button:hover {
-  background-color: grey;
+  background-color: #bdc3c7; /* Light background color on hover */
 }
 
-.searchbar button:active {
-  background-color: darkgray;
-}
-
-#tablediv{
+#tablediv {
   align-self: center;
   width: 90%;
   overflow: hidden;
-  height: auto;
+  height: 100%;
 }
 </style>

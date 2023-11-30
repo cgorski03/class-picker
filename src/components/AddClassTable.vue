@@ -79,7 +79,7 @@ const loadingHandler = () => {
   margin-right: auto;
   height: 100%;
   width: 94%;
-  background-color: #151E3D;
+  background-color: #3A3B3C;
   display: flex;
   flex-direction: row;
 }
@@ -89,7 +89,7 @@ const loadingHandler = () => {
   padding-bottom: 3%;
   height: 65vh;
   width: 100%;
-  background-color: #151E3D;
+  background-color: #3A3B3C;
 }
 
 #classSearch{
@@ -106,7 +106,7 @@ const loadingHandler = () => {
 }
 
 #yourclassitem{
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #3A3B3C;
   padding: 10px;
 }
 
