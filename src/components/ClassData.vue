@@ -11,7 +11,6 @@ import versionState from '../state/version';
 import course_symbol from './addclasses/course_symbol.vue';
 
 const yourCurrentClassList = ref([]);
-// Watch for changes in the user object
 
 //take in data from Class class
 const props = defineProps({
@@ -31,9 +30,16 @@ const addclass = async () => {
   emit("toggleloader");
   const url = "https://4jui141iri.execute-api.us-east-1.amazonaws.com/dev/class"
 
-
   try{
-    
+    if(!props.classData.isCompatible){
+      throw new Error("This class is not compatible with ", props.classData.conflictingCourse);
+    }
+  }catch(error){
+    alert("This class is not compatible with " + props.classData.classTitle + ". Please edit your schedule and try again.");
+    emit("toggleloader");
+    return;
+  }
+  try{
     const response = await fetch(url, {
           method: "POST",
           body:JSON.stringify({
@@ -53,7 +59,7 @@ const addclass = async () => {
         const responseData = JSON.parse(responseText);
 
         //reseting list to empty for the next time you add a class
-       
+
         yourCurrentClassList.value =responseData;
         emit("toggleloader");
         emit("sendclass", yourCurrentClassList.value);
