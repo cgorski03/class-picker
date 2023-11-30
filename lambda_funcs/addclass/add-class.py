@@ -32,6 +32,9 @@ import urllib.parse
     Error Handling:
     The function gracefully handles errors and provides informative messages along with appropriate HTTP status codes.
     """
+import json
+import boto3
+import urllib.parse
 
 def lambda_handler(event, context):
     headers = {
@@ -39,8 +42,10 @@ def lambda_handler(event, context):
         "Access-Control-Allow-Headers": "Content-Type",
         "Access-Control-Allow-Methods": "OPTIONS, POST, GET"
     }
-    
-    request_data = json.loads(json.dumps(event['body']))
+    #dev
+    #request_data = json.loads(json.dumps(event['body']))
+    #prod
+    request_data = json.loads(event['body'])
     #check if the proper arguments have been provided
     if 'course' not in request_data or 'username' not in request_data:
         return{
@@ -64,24 +69,28 @@ def lambda_handler(event, context):
     response = courseTable.get_item(
         Key={'Title': course_name}  
     )
-    
+
 
     if 'Item' in response:
             #at this point username and class both exist and you can add class to user
             # Add the course to the user's classes (string set)
+        response = courseTable.update_item(
+            Key={'Title': course_name},
+            UpdateExpression='ADD students :new_element',
+            ExpressionAttributeValues={':new_element': {username}},
+        )
         response = userTable.update_item(
             Key={'username': username},
             UpdateExpression='ADD courses :new_element',
             ExpressionAttributeValues={':new_element': {course_name}},
-            ReturnValues='ALL_NEW'  # If you want to return the updated item
         )
 
         if response['ResponseMetadata']['HTTPStatusCode'] == 200:
-            print(response['Attributes'])
+            updated_courses = userTable.get_item(Key={'username' : username})['Item']['courses']
             return {
                 'statusCode': 200,
                 'headers': headers,
-                'body': json.dumps(list(response['Attributes']))
+                'body': json.dumps(list(updated_courses))
         }
 
         else:
