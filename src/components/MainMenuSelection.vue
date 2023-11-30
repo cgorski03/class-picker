@@ -24,7 +24,7 @@ const navigate = () => {
     console.log("registering button ppress");
     logout({
         logoutParams: {
-            returnTo: 'http://localhost:5173/'
+            returnTo: window.location.origin
         },
     });
   }
