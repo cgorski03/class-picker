@@ -25,7 +25,7 @@
           </form>
         </div>
         <div id ="tablediv">
-          <ClassTable :classes="classList" :loading="loading"></ClassTable>
+          <ClassTable @refresh="refreshHandler" :classes="classList" :loading="loading"></ClassTable>
         </div>
       </div>
     </div>
@@ -59,7 +59,9 @@ class Class {
     this.conflictingCourse = ref('')
   }
 }
-
+const refreshHandler = () =>{
+  search();
+}
 //searches for classes in the databased by name
 const search = async () => {
   classList.value = [];

@@ -10,7 +10,7 @@
             <Loading v-if="loading"/>
             <li v-for="classInstance in props.classes" :key="classInstance.classTitle">
               <div>
-                <ClassData @sendclass="loadYourClasses" @toggleloader="loadingHandler" :classData="classInstance"></ClassData>
+                <ClassData @sendclass="loadYourClasses" @toggleloader="loadingHandler" @refresh="refreshHandler" :classData="classInstance"></ClassData>
               </div>
             </li>
           </ul>
@@ -50,7 +50,11 @@ const props = defineProps({
 });
 
 //this handles the data sent up by the child component
+const emit = defineEmits("refresh")
 
+const refreshHandler = () =>{
+  emit("refresh")
+}
 const loadYourClasses = (yourCurrentClassList) => {
   console.log('loadYourClasses called with:', yourCurrentClassList);
   yourclasseslist.value = yourCurrentClassList;

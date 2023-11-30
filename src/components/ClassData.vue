@@ -20,7 +20,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits("sendclass", "toggleloader")
+const emit = defineEmits("sendclass", "toggleloader", "refresh")
 
 //add a class to user schedule and return the users current schedule
 const addclass = async () => {
@@ -63,6 +63,7 @@ const addclass = async () => {
         yourCurrentClassList.value =responseData;
         emit("toggleloader");
         emit("sendclass", yourCurrentClassList.value);
+        emit("refresh");
     }
     else {
       console.log("Error response:", responseText);
