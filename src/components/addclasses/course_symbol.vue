@@ -1,5 +1,5 @@
 <template>
-    <span v-if="isCompatible" class="symbol checkmark" aria-label="Class is compatible" @mouseover="show_symbol_tooltip" @mouseleave="hide_symbol_tooltip">✓</span>
+    <span v-if="isCompatible" style="color:green" class="symbol" aria-label="Class is compatible" @mouseover="show_symbol_tooltip" @mouseleave="hide_symbol_tooltip">✓</span>
     <span v-else class="symbol x-mark" aria-label="Class is not compatible" @mouseover="show_symbol_tooltip" @mouseleave="hide_symbol_tooltip">✕</span>
     <div v-if="show_symbol_tooltip" class="_symbol_tooltip">{{ isCompatible ? 'Class is compatible with schedule' : 'Class has conflicts with ' + course}}</div>
 </template>
@@ -12,9 +12,9 @@
 
 .symbol {
   position: absolute;
-  top: 5px;
-  left: 5px;
-  font-size: 20px; /* Adjust the font size as needed */
+  top: 8px;
+  left: 3%;
+  font-size: 25px; 
   font-weight: bold;
 }
 .checkmark{
@@ -26,15 +26,14 @@
 ._symbol_tooltip {
   display: none;
   position: absolute;
-  top: -15px; /* Adjust the distance from the symbol */
+  top: -10px; 
   left: 3%;
-  /*transform: translateX(-50%);*/
-  background-color: #fff; /* _symbol_tooltip background color */
-  color: #000; /* _symbol_tooltip text color */
+  background-color: #fff;
+  color: #000; 
   padding: 2px;
-  border: 1px solid #ccc; /* _symbol_tooltip border */
+  border: 2px solid #ccc; 
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 16px;
   white-space: nowrap;
   z-index: 1;
 }

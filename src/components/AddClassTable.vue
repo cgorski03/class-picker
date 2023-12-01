@@ -8,7 +8,7 @@
               <h2 id="classtableitemtitle">Available Classes</h2>
             </li>
             <Loading v-if="loading"/>
-            <li v-for="classInstance in props.classes" :key="classInstance.classTitle">
+            <li v-for="classInstance in props.classes" :key="classInstance.classTitle" style="position: relative;">
               <div>
                 <ClassData @sendclass="loadYourClasses" @toggleloader="loadingHandler" @refresh="refreshHandler" :classData="classInstance"></ClassData>
               </div>
@@ -56,7 +56,6 @@ const refreshHandler = () =>{
   emit("refresh")
 }
 const loadYourClasses = (yourCurrentClassList) => {
-  console.log('loadYourClasses called with:', yourCurrentClassList);
   yourclasseslist.value = yourCurrentClassList;
 };
 
@@ -112,6 +111,7 @@ const loadingHandler = () => {
 
 .AddClassTable{
   height: auto;
+  background-color: #A9A9A9;
   max-height: auto;
 }
 
