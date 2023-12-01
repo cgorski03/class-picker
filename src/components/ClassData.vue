@@ -1,16 +1,16 @@
 <template>
-  <button class="item" @click.prevent="addclass" style="position: relative;">
-    <p style="color: black;">{{ classData.classSubj }} {{ classData.classCANum }}: {{ classData.classTitle }}</p>
-    <course_symbol :isCompatible="classData.isCompatible" :course="classData.conflictingCourse"></course_symbol>
-  </button>
+  <course_symbol :isCompatible="classData.isCompatible" :course="classData.conflictingCourse"></course_symbol>
+    <dropdown @addclass="addclass" :course="classData" :isStudent="versionState.getVersion.value" :addClass="true" class="item" style="position: relative;" >
+      </dropdown>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import versionState from '../state/version';
 import course_symbol from './addclasses/course_symbol.vue';
-
+import dropdown from './dropdown.vue'
 const yourCurrentClassList = ref([]);
+const emit = defineEmits(['sendclass', 'toggleloader', 'refresh']);
 
 //take in data from Class class
 const props = defineProps({
@@ -20,7 +20,6 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits("sendclass", "toggleloader", "refresh")
 
 //add a class to user schedule and return the users current schedule
 const addclass = async () => {
@@ -81,16 +80,9 @@ const addclass = async () => {
 
 
 .item {
-  border-bottom: 1px solid black;
-  width: 100%;
-  padding: 20px;
+  margin: auto;
+  padding: 5px;
+  width: 90%;
 }
 
-.item:hover {
-  background-color: gray;
-}
-
-.item:active {
-  background-color: darkgray;
-}
 </style>

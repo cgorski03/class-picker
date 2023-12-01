@@ -40,7 +40,6 @@ import { Class } from '../classes/module'
 let loading = ref(false)
 //stores the user input
 let className = ref("");
-
 //stores the list of classes to send to the child component
 let classList = ref([]);
 

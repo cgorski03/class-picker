@@ -4,9 +4,12 @@
       <span class="arrow">{{ showDropdown ? '▼' : '▶' }} {{ course.classTitle }}</span> 
     </div>
 
-    <div v-if="showDropdown" class="course-details">
+    <div v-if="showDropdown"
+      :class="{ addclasses: addClass }"
+      class="course-details"
+      @click="emitAddClassSignal">
       <p><strong>{{ course.classSubj }} {{ course.classCANum }} {{ course.classTitle }}</strong> {{ course.teacher }}</p>
-      <p>Meeting Time: {{ course.startTime }} - {{ course.endTime }} on {{ convertToFullDays(course.days_meet) }}</p>
+      <p>Meeting Time: {{ course.startTime }} - {{ course.endTime }} on {{ convertToFullDays(course.daysMeet) }}</p>
       <div v-if="!isStudent">
         <p><strong>Student Roster: </strong></p>
         <p v-for="student in getStudentList(course.studentList)" :key="'student'">
@@ -22,10 +25,13 @@
   </div>
 </template>
 
-<script>
-import versionState from '../state/version';
 
+<script>
+
+import versionState from '../state/version';
+import {ref} from 'vue'
 export default {
+  emits: ['addClass'], // change to PascalCase for consistency
   props: {
     course: {
       type: Object,
@@ -35,10 +41,16 @@ export default {
       type: Boolean,
       required: true,
     },
+    addClass: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
+
   data() {
     return {
-      showDropdown: false,
+      showDropdown: this.addClass,
     };
   },
   methods: {
@@ -46,13 +58,20 @@ export default {
       this.showDropdown = !this.showDropdown;
     },
     convertToFullDays(abbreviatedDays) {
-      if (abbreviatedDays == 'TR') {
+      if (abbreviatedDays === 'TR') {
         return "Tuesday, Thursday";
       }
-      if (abbreviatedDays == 'MW') {
+      if (abbreviatedDays === 'MW') {
         return "Monday, Wednesday";
-      } else {
+      } 
+      if (abbreviatedDays === 'MWF') {
         return "Monday, Wednesday, Friday";
+      }
+    },
+    emitAddClassSignal() {
+      if (this.addClass) {
+        this.$emit('addclass'); // use this.$emit to emit the event
+        console.log("Click worked");
       }
     },
 
@@ -61,9 +80,15 @@ export default {
     },
   },
 };
+
 </script>
 
-<style scoped>
+<style >
+
+.addclasses:hover{
+  background-color: #bdc3c7;
+  cursor: pointer;
+}
 .course-dropdown {
   margin-bottom: 15px;
 }
