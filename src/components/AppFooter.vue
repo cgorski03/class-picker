@@ -10,8 +10,15 @@ export default{
 </script>
 
 <style>
+<<<<<<< HEAD
 .footer {
   position: fixed; /* Make footer stay at bottom */
+=======
+
+.footer div{
+  position: fixed;
+  margin: 0;
+>>>>>>> a32ed9be868e813bb6d501923f268c237b2275c1
   left: 0;
   right: 0;
   bottom: 0;
