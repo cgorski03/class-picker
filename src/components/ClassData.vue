@@ -1,13 +1,16 @@
 <template>
-  <button class="item" @click.prevent="addclass">
-    <p style="color: black;">{{ classData.classTitle }} {{ classData.classCA }} {{ classData.classCANum }} {{ classData.classSubj }}</p>
-  </button>
+  <course_symbol :isCompatible="classData.isCompatible" :course="classData.conflictingCourse"></course_symbol>
+    <dropdown @addclass="addclass" :course="classData" :isStudent="versionState.getVersion.value" :addClass="true" class="item" style="position: relative;" >
+      </dropdown>
 </template>
 
 <script setup>
 import { ref } from 'vue';
-
-const yourCurrentClassList = ref([])
+import versionState from '../state/version';
+import course_symbol from './addclasses/course_symbol.vue';
+import dropdown from './dropdown.vue'
+const yourCurrentClassList = ref([]);
+const emit = defineEmits(['sendclass', 'toggleloader', 'refresh']);
 
 //take in data from Class class
 const props = defineProps({
@@ -17,7 +20,6 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits("sendclass", "toggleloader")
 
 //add a class to user schedule and return the users current schedule
 const addclass = async () => {
@@ -26,11 +28,21 @@ const addclass = async () => {
   emit("sendclass", yourCurrentClassList.value)
   emit("toggleloader");
   const url = "https://4jui141iri.execute-api.us-east-1.amazonaws.com/dev/class"
+
+  try{
+    if(!props.classData.isCompatible){
+      throw new Error("This class is not compatible with ", props.classData.conflictingCourse);
+    }
+  }catch(error){
+    alert("This class is not compatible with " + props.classData.conflictingCourse + ". Please edit your schedule and try again.");
+    emit("toggleloader");
+    return;
+  }
   try{
     const response = await fetch(url, {
           method: "POST",
           body:JSON.stringify({
-            "username": "jak19018",
+            "username": versionState.getuserID.value,
             "course": props.classData.classTitle
           }),
           headers: {
@@ -46,33 +58,31 @@ const addclass = async () => {
         const responseData = JSON.parse(responseText);
 
         //reseting list to empty for the next time you add a class
-       
+
         yourCurrentClassList.value =responseData;
         emit("toggleloader");
         emit("sendclass", yourCurrentClassList.value);
+        emit("refresh");
     }
     else {
       console.log("Error response:", responseText);
+      console.log(versionState.getuserID.value)
     }
   }
   catch (error) {
+
     console.error("Error during fetch:", error);
   }
 }
 </script>
 
 <style scoped>
+
+
 .item {
-  border-bottom: 1px solid black;
-  width: 100%;
-  padding: 20px;
+  margin: auto;
+  padding: 5px;
+  width: 90%;
 }
 
-.item:hover {
-  background-color: gray;
-}
-
-.item:active {
-  background-color: darkgray;
-}
 </style>

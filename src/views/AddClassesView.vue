@@ -9,24 +9,21 @@
         <div class="formatText">
           <h2>Add Classes</h2>
         </div>
-        <div>
-          <form class="searchbar">
-            <div id="searchfield">
-              <input
-                type="text"
-                placeholder="Search by keyword"
-                id="className"
-                v-model="className"
-                @keyup.enter="search"
-              />
-            </div>
-            <div id="searchbutton">
-              <button @click.prevent="search"></button>
-            </div>
-          </form>
-        </div>
-        <div id ="tablediv">
-          <ClassTable :classes="classList" :loading="loading"></ClassTable>
+        <form class="searchbar">
+          <div id="searchfield">
+            <input
+              type="text"
+              placeholder="Search by keyword"
+              id="className"
+              v-model="className"
+            />
+          </div>
+          <div id="searchbutton">
+            <button @click.prevent="search"></button>
+          </div>
+        </form>
+        <div id="tablediv">
+          <ClassTable @refresh="refreshHandler" :classes="classList" :loading="loading"></ClassTable>
         </div>
       </div>
     </div>
@@ -37,23 +34,18 @@
 import MainMenu from "../components/MainMenu.vue";
 import ClassTable from "../components/AddClassTable.vue";
 import { ref, reactive } from "vue";
-
+import versionState from '../state/version';
+import { check_compatibility } from '../classes/check'
+import { Class } from '../classes/module'
 let loading = ref(false)
 //stores the user input
 let className = ref("");
-
 //stores the list of classes to send to the child component
 let classList = ref([]);
 
-class Class {
-  constructor(classTitle, classCA, classCANum, classSubj) {
-    this.classTitle = classTitle;
-    this.classCA = classCA;
-    this.classCANum = classCANum;
-    this.classSubj = classSubj;
-  }
+const refreshHandler = () =>{
+  search();
 }
-
 //searches for classes in the databased by name
 const search = async () => {
   classList.value = [];
@@ -76,7 +68,6 @@ const search = async () => {
 
       // Clear existing classList
       
-
       // Loop through the responseData and create instances of Class
       for (const key in responseData) {
         if (Object.hasOwnProperty.call(responseData, key)) {
@@ -86,13 +77,20 @@ const search = async () => {
               item.Title,
               item['CA DESCR'],
               item['CAT NBR'],
-              item.SUBJ
+              item.SUBJ,
+              item.days_meet,
+              item.start_time,
+              item.end_time
             )
           );
+          /*const isCompatible = await check_compatibility(item.Title, versionState.getuserID.value);
+          newClass.isCompatible = isCompatible;
+          */
           classList.value.push(newClass);
         }
       }
-
+      check_compatibility(classList, versionState.getuserID.value);
+      
     } else {
       console.log("Error response:", responseText);
     }
@@ -112,27 +110,28 @@ const search = async () => {
   display: flex;
   flex-direction: column;
   height: 100%;
-  max-height: 100%;
+  background-color: #A9A9A9;
 }
 
 .home h2 {
   text-align: center;
   font-size: 1.5rem;
-  background-color: #151e3d;
+  background-color: #151E3D; /* Blue background color */
   color: white;
-  padding: 25px;
+  padding: 1rem; /* Adjusted padding */
+  margin: 0;
 }
 
 .menuContent {
-  height: auto;
+  height: 100%;
   width: 20%;
   background-color: #b90e0a;
-  border: 2px black;
+  border: 2px solid black;
 }
 
 .mainContent {
-  min-height: max-content;
-  height: auto;
+  min-height: 100%;
+  height: 100%;
   width: 80%;
 }
 
@@ -171,6 +170,7 @@ main {
 
 /* Search bar styles */
 .searchbar {
+<<<<<<< HEAD
   background-color: #151e3d;
   padding: 20px;
   margin: 0 60px; /* Simplified margin */
@@ -183,10 +183,25 @@ main {
 .searchbar #searchfield {
   flex-grow: 1; /* Allow search field to grow */
   margin-right: 20px; /* Space between field and button */
+=======
+  background-color: #3A3B3C; /* Light background color */
+  margin: 30px auto;
+  padding: 1rem; /* Adjusted padding */
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Align items vertically */
+}
+
+.searchbar #searchfield {
+  flex-grow: 1; /* Allow the input to grow and fill available space */
+  margin-right: 1rem; /* Added margin */
+>>>>>>> 4c00aced35d8619dc42fc80038f7c97660101602
 }
 
 .searchbar input {
   width: 100%;
+<<<<<<< HEAD
   font-size: 1rem;
   padding: 10px; /* Padding for better text visibility */
   border-radius: 5px; /* Rounded corners for input */
@@ -194,6 +209,19 @@ main {
 
 .searchbar input::placeholder {
   color: #aaa; /* Lighter color for placeholder */
+=======
+  font-size: 1rem; /* Adjusted font size */
+  padding: 0.5rem; /* Adjusted padding */
+}
+
+.searchbar input::placeholder {
+  text-align: center;
+  color: #7f8c8d; /* Light text color */
+}
+
+.searchbar input:hover {
+  background-color: #dfe6e9; /* Light background color on hover */
+>>>>>>> 4c00aced35d8619dc42fc80038f7c97660101602
 }
 
 .searchbar input:hover {
@@ -202,6 +230,7 @@ main {
 
 /* Button styles */
 .searchbar button {
+<<<<<<< HEAD
   background: url("../assets/images/search.webp") no-repeat center;
   background-size: contain;
   width: 50px; /* Fixed width for button */
@@ -219,10 +248,30 @@ main {
 }
 
 #tablediv{
+=======
+  border-radius: 50%;
+  background: url("../assets/images/search.webp") no-repeat scroll 0 0 transparent;
+  background-size: 30px; /* Adjusted background size */
+  color: #000000;
+  cursor: pointer;
+  padding: 0.75rem; /* Adjusted padding */
+  border: 1px solid white; /* Adjusted border color */
+}
+
+.searchbar button:hover {
+  background-color: #bdc3c7; /* Light background color on hover */
+}
+
+#tablediv {
+>>>>>>> 4c00aced35d8619dc42fc80038f7c97660101602
   align-self: center;
   width: 90%;
   overflow: hidden;
-  height: auto;
+  height: 100%;
 }
+<<<<<<< HEAD
 
 </style>
+=======
+</style>
+>>>>>>> 4c00aced35d8619dc42fc80038f7c97660101602

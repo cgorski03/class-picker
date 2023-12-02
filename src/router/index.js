@@ -20,7 +20,13 @@ import WelcomeView from "../views/WelcomeView.vue";
 import AddClasses from "../views/AddClassesView.vue";
 import DropClasses from "../views/DropClassesView.vue";
 import Schedule from "../views/ScheduleView.vue";
+<<<<<<< HEAD
 >>>>>>> a32ed9be868e813bb6d501923f268c237b2275c1
+=======
+import TutorialView from "../views/TutorialView.vue";
+import { useAuth0 } from "@auth0/auth0-vue";
+
+>>>>>>> 4c00aced35d8619dc42fc80038f7c97660101602
 
 
 const router = createRouter({
@@ -78,7 +84,26 @@ const router = createRouter({
       name: "fetch",
       component: FetchView,
     },
+    {
+      path: "/tutorial",
+      name: "tutorial",
+      component: TutorialView,
+    },
   ],
 });
 
+// Navigation guard
+router.beforeEach((to, from, next) => {
+  const { isAuthenticated } = useAuth0();
+  // Check if the route requires authentication
+    // Check if the user is authenticated
+    if (!isAuthenticated.value && to.path != '/' && to.path != '/home') {
+      alert("You are not authorized to access this page. Please log in first.")
+      // Redirect to the login page or any other appropriate action
+      next('/');
+  } else {
+    // Continue with the navigation
+    next();
+  }
+});
 export default router;

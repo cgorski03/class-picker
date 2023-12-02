@@ -8,9 +8,9 @@
               <h2 id="classtableitemtitle">Available Classes</h2>
             </li>
             <Loading v-if="loading"/>
-            <li v-for="classInstance in props.classes" :key="classInstance.classTitle">
+            <li v-for="classInstance in props.classes" :key="classInstance.classTitle" style="position: relative;">
               <div>
-                <ClassData @sendclass="loadYourClasses" @toggleloader="loadingHandler" :classData="classInstance"></ClassData>
+                <ClassData @sendclass="loadYourClasses" @toggleloader="loadingHandler" @refresh="refreshHandler" :classData="classInstance"></ClassData>
               </div>
             </li>
           </ul>
@@ -50,9 +50,12 @@ const props = defineProps({
 });
 
 //this handles the data sent up by the child component
+const emit = defineEmits("refresh")
 
+const refreshHandler = () =>{
+  emit("refresh")
+}
 const loadYourClasses = (yourCurrentClassList) => {
-  console.log('loadYourClasses called with:', yourCurrentClassList);
   yourclasseslist.value = yourCurrentClassList;
 };
 
@@ -75,7 +78,7 @@ const loadingHandler = () => {
   margin-right: auto;
   height: 100%;
   width: 94%;
-  background-color: #151E3D;
+  background-color: #3A3B3C;
   display: flex;
   flex-direction: row;
 }
@@ -83,9 +86,9 @@ const loadingHandler = () => {
 #tableborder{
   padding-top: 3%;
   padding-bottom: 3%;
-  height: 400px;
+  height: 65vh;
   width: 100%;
-  background-color: #151E3D;
+  background-color: #3A3B3C;
 }
 
 #classSearch{
@@ -102,12 +105,13 @@ const loadingHandler = () => {
 }
 
 #yourclassitem{
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #3A3B3C;
   padding: 10px;
 }
 
 .AddClassTable{
   height: auto;
+  background-color: #A9A9A9;
   max-height: auto;
 }
 

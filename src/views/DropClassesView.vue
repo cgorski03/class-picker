@@ -9,9 +9,8 @@
           <div class = "formatText">
             <h2>Drop Classes</h2>
           </div>
-          <div class = "formatImage">
-            <!-- Need to fix so it resizes and works on different display -->
-            <img src ="../assets/images/logo6.jpg" alt="HusckyLogo" width="550" height="366">
+          <div id ="tablediv">
+            <DropClassTable/>
           </div>
         </div>
       </div>
@@ -21,6 +20,7 @@
   
   <script setup>
   import MainMenu from "../components/MainMenu.vue";
+  import DropClassTable from "../components/DropClassTable.vue"
   
   </script>
   <style scoped>
@@ -58,5 +58,14 @@
     display: flex;
     flex-direction:row;  
   }
+
+  #tablediv{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  align-self: center;
+  width: 90%;
+  overflow: hidden;
+  height: auto;
+}
   
   </style>
