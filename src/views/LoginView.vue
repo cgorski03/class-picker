@@ -34,6 +34,7 @@
 import { ref } from 'vue';
 import versionState from '../state/version';
 import { useRouter } from 'vue-router';
+
 const router = useRouter();
 const apiURL = 'https://4jui141iri.execute-api.us-east-1.amazonaws.com/dev/authenticate';
 
@@ -73,35 +74,48 @@ const login = () => {
 <style>
 
 /* Reset some default styles and apply a full height to the body and main container */
-html, body, #app {
+html, body {
   height: 100%;
   margin: 0;
-  padding: 0; /* Reset default padding */
+  padding: 0;
   overflow-x: hidden; /* Prevent horizontal scroll */
+  background-image: url('C:\Users\archi\project2102\Group-Project\src\views\UCONNLOGIN.jpg'); /* Ensure this is the correct relative path */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Keep the background fixed when scrolling */
 }
 
+/* If you have an #app div that wraps your entire Vue app, apply styles there too */
+#app {
+  min-height: 100vh; /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Remove the background styles from the main tag */
 main {
+  flex-grow: 1; /* Take up all available vertical space */
   display: flex;
   flex-direction: column; /* Stack children vertically */
   justify-content: center;
   align-items: center;
-  padding-top: 60px; /* Height of header */
-  padding-bottom: 60px; /* Height of footer */
-  flex-grow: 1; /* Allow main content to grow and fill space */
-  background-image: url('C:\Users\archi\Downloads\UCONNLOGIN.jpg'); /* Add your local path here */
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; /* Background stays fixed during scroll */
+  padding-top: 60px; /* Adjust this value to match the height of your header */
+  padding-bottom: 60px; /* Adjust this value to match the height of your footer */
+  /* No background image here */
 }
 
+/* Adjust the .middle class for the login form container */
 .middle {
-  margin-top: 95px;
+  margin-top: 95px; /* You might not need this if the main tag is centering content */
   width: 30%; /* Adjust width as needed */
   background-color: rgba(255, 255, 255, 0.70); /* Semi-transparent background */
   padding: 40px;
   border-radius: 15px; /* Rounded corners for the form */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
+
+/* ... other styles ... */
+
 
 .title {
   text-align: center;

@@ -9,7 +9,6 @@
 <style scoped>
 /* Give the header itself a background color, a border, and add some padding to the content */
 .app-header {
-
   background-color: #2c3e50; /* Darker background color */
   border-bottom: 2px solid #34495e; /* Slightly darker border color */
   padding: 1rem; /* Adjusted padding */

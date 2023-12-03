@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-import ClassData from "../components/ClassData.vue";
+import ClassData from "../components/classdata.vue";
 import { ref } from 'vue';
 import Loading from "../components/Loading.vue"
 
@@ -70,53 +70,62 @@ const loadingHandler = () => {
   font-weight: bold;
   font-size: 1.5rem;
   text-align: center;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #e0e0e0; /* Softer border color */
 }
 
-#tableLayout{
-  margin-left: auto;
-  margin-right: auto;
-  height: 100%;
-  width: 94%;
-  background-color: #3A3B3C;
+#tableLayout {
+  margin: auto;
+  height: 125%;
+  width: 100%;
+  background-color: #f7f7f7; /* Lighter background for the entire table area */
   display: flex;
   flex-direction: row;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* subtle shadow for depth */
 }
 
-#tableborder{
+#tableborder {
   padding-top: 3%;
   padding-bottom: 3%;
-  height: 65vh;
+  height: 75vh;
   width: 100%;
-  background-color: #3A3B3C;
+  background-color: #f7f7f7; /* Lighter background for the table border */
 }
 
-#classSearch{
+#classSearch {
   width: 67.5%;
   background-color: white;
   margin-right: 2.5%;
   overflow: auto;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); /* subtle inset shadow for depth */
 }
 
-#yourClasses{
+#yourClasses {
   width: 30%;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   overflow: auto;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); /* subtle inset shadow for depth */
 }
 
-#yourclassitem{
-  border-bottom: 1px solid #3A3B3C;
+#yourclassitem {
+  border-bottom: 1px solid #e0e0e0; /* Softer border color */
   padding: 10px;
 }
 
-.AddClassTable{
+.AddClassTable {
   height: auto;
-  background-color: #A9A9A9;
+  background-color: #eeeeee; /* Slightly darker background for contrast */
   max-height: auto;
 }
 
-#classtableitemtitle{
-  color: black;
+#classtableitemtitle {
+  color: #333; /* Dark grey color for better readability */
 }
 
+#yourClasses #titleItem {
+  background-color: #33333314; /* Match the background color with the Available Classes header */
+}
+/* Global font setting */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+}
 </style>

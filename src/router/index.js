@@ -5,28 +5,18 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import FormView from "../views/FormView.vue";
 import FetchView from "../views/FetchView.vue";
-<<<<<<< HEAD
 
-import LoginView from '../views/LoginView.vue';
-import MainMenu from '../components/MainMenu.vue';
-import WelcomeView from '../views/WelcomeView.vue';
-import AddClasses from '../views/AddClassesView.vue';
-import DropClasses from '../views/DropClassesView.vue';
-import Schedule from '../views/ScheduleView.vue';
-import Tutorial from '../views/TutorialView.vue';
-=======
 import LoginView from "../views/LoginView.vue";
+import MainMenu from "../components/MainMenu.vue";
 import WelcomeView from "../views/WelcomeView.vue";
 import AddClasses from "../views/AddClassesView.vue";
 import DropClasses from "../views/DropClassesView.vue";
 import Schedule from "../views/ScheduleView.vue";
-<<<<<<< HEAD
->>>>>>> a32ed9be868e813bb6d501923f268c237b2275c1
-=======
-import TutorialView from "../views/TutorialView.vue";
-import { useAuth0 } from "@auth0/auth0-vue";
+import TutorialView from "../views/TutorialView.vue"; // Use TutorialView if it's the correct component
+import { useAuth0 } from "@auth0/auth0-vue"; // Include if Auth0 authentication is required
 
->>>>>>> 4c00aced35d8619dc42fc80038f7c97660101602
+// ... Rest of your router setup
+
 
 
 const router = createRouter({
