@@ -5,13 +5,17 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import FormView from "../views/FormView.vue";
 import FetchView from "../views/FetchView.vue";
+
 import LoginView from "../views/LoginView.vue";
+import MainMenu from "../components/MainMenu.vue";
 import WelcomeView from "../views/WelcomeView.vue";
 import AddClasses from "../views/AddClassesView.vue";
 import DropClasses from "../views/DropClassesView.vue";
 import Schedule from "../views/ScheduleView.vue";
-import TutorialView from "../views/TutorialView.vue";
-import { useAuth0 } from "@auth0/auth0-vue";
+import TutorialView from "../views/TutorialView.vue"; // Use TutorialView if it's the correct component
+import { useAuth0 } from "@auth0/auth0-vue"; // Include if Auth0 authentication is required
+
+// ... Rest of your router setup
 
 
 

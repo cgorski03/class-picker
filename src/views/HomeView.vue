@@ -11,7 +11,7 @@
         </div>
         <div class = "formatImage">
           <!-- Need to fix so it resizes and works on different display -->
-          <img src ="../assets/images/logo6.jpg" alt="HusckyLogo" width="550" height="366">
+          <img src ="../assets/images/UCONNHOMEPAGE.png" alt="HusckyLogo" width="1800" height="500">
         </div>
       </div>
     </div>
@@ -47,18 +47,22 @@ watch(user, (newUser) => {
 <style scoped>
 
 .home {
+  overflow: hidden;
   padding: 0;
   display: flex;
   flex-direction: column;
-  height: auto;
+  height: 100%;
+  background-color: #F5F5F5; /* Updated background color for a cleaner look */
 }
 
+/* Header styling */
 .home h2 {
   text-align: center;
-  font-size: 1.5rem;
-  background-color: #151E3D;
+  font-size: 2rem; /* Keep the font size for emphasis */
+  background-color: #151E3D; /* Updated to a more modern navy blue */
   color: white;
-  padding: 25px;
+  padding: 1rem;
+  margin-bottom: 20px; /* Add some space below the heading */
 }
 
 img {
@@ -67,29 +71,33 @@ img {
   margin-right: auto;
 }
 
-.menuContent {  
+.menuContent {
+  height: 95%;
   width: 20%;
-  background-color: #B90E0A;
-  border: 2px black;
-  height: auto;
-  
+  background-color: #B90E0A; /* Updated to a softer shade of blue */
+  border-right: 1px solid #000000; /* Light border for separation */
 }
 
+/* Main content styling */
+.mainContent {
+  min-height: 100%;
+  height: 100%;
+  width: 80%;
+  padding: 20px;
+}
+
+/* Flexbox layout for main area */
+main {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
 .formatText{
   height: auto;
 }
 .formatImage{
   height: auto;
 }
-.mainContent{
-  height: auto;
-  width: 80%;
-}
 
-main{
-  display: flex;
-  flex-direction:row;  
-  height: 100vh;
-}
 
 </style>

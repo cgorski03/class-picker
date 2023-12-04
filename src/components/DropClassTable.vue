@@ -107,54 +107,56 @@ const dropSelectedClasses = async () => {
   </script>
   
   <style>
-  #dropclassdiv{
-   width: auto;
-   height: 100px; 
-   display: flex;
-   align-items: center;
-   justify-content: center;
+  #dropclassdiv {
+    width: auto;
+    height: 100px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  #dropclassbutton{
+  #dropclassbutton {
     display: block;
     padding: 20px 40px;
-    background-color: #151E3D;
+    background-color: #151E3D; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove default border */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    border-radius: 4px; /* Rounded corners */
   }
 
   #droptableLayout {
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     height: 100%;
     width: 94%;
-    background-color: #151E3D;
+    background-color: #F5F5F5; /* Updated to match Add Classes */
     display: flex;
     flex-direction: column;
     overflow: auto;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow for depth */
   }
   
   #droptableborder {
     padding-top: 3%;
     padding-bottom: 3%;
-    height: 400px;
+    height: 71vh;
     width: 100%;
-    background-color: #151E3D;
-
+    background-color: #ffffff; /* Updated to match Add Classes header */
+    color: white; /* Text color for header */
   }
+
   /* The container */
-.container {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-top: 10px;
-  margin-left: 10px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
+  .container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    user-select: none;
+  }
 
 /* Hide the browser's default checkbox */
 .container input {
@@ -210,10 +212,11 @@ const dropSelectedClasses = async () => {
   transform: rotate(45deg);
 }
 
-#indivisualCourse{
-    background-color: white;
+#indivisualCourse {
+    background-color: #151E3D;
     padding: 10px;
     margin-bottom: 5px;
-}
+    border-bottom: 1px solid #e0e0e0; /* Consistent border color */
+  }
   </style>
   

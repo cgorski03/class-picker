@@ -104,47 +104,73 @@
   
   </script>
   <style scoped>
+  /* Main layout */
+  .menuContent {
+  height: 95%;
+  width: 20%;
+  background-color: #B90E0A; /* Updated to a softer shade of blue */
+  border-right: 1px solid #000000; /* Light border for separation */
+}
 
+/* Main content styling */
+.mainContent {
+  min-height: 100%;
+  height: 100%;
+  width: 80%;
+  padding: 20px;
+}
+
+/* Flexbox layout for main area */
+main {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+  
+  /* Main content area */
   .home {
-    padding: 0;
+  overflow: hidden;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #F5F5F5; /* Updated background color for a cleaner look */
+}
+
+/* Header styling */
+.home h2 {
+  text-align: center;
+  font-size: 2rem; /* Keep the font size for emphasis */
+  background-color: #151E3D; /* Updated to a more modern navy blue */
+  color: white;
+  padding: 1rem;
+  margin-bottom: -20px; /* Add some space below the heading */
+}
+
+  /* Table container */
+  #tablediv {
+    align-self: center;
+    width: 100%;
+    overflow: hidden;
+    height: calc(100vh - 50px); /* Adjusted for header height */
+    background-color: white;
+    border-radius: 4px; /* Rounded corners for modern feel */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    margin-top: 20px; /* Space between header and table */
+    margin-bottom: 20px; /* Space at the bottom */
+  }
+  
+  /* Table layout for 'Schedule' */
+  #droptableLayout {
+    margin: auto;
+    width: 100%;
+    background-color: #F5F5F5; /* Consistent background for both */
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    overflow: hidden;
   }
   
-  .home h2 {
-    text-align: center;
-    font-size: 1.5rem;
-    background-color: #151E3D;
-    color: white;
-    padding: 25px;
-  }
+  /* Adjustments for checkboxes and custom checkmarks */
+  /* ... (keep your existing styles for checkboxes and checkmarks) ... */
   
-  .menuContent {  
-    width: 20%;
-    background-color: #B90E0A;
-    border: 2px solid black;
-    height: 100vh;
-  }
-  
-  .mainContent{
-    width: 80%;
-    height: 100vh;
-    background-color: white;
-  }
-  
-  main{
-    height: 100vh;
-    display: flex;
-    flex-direction:row;  
-  }
-  #droptableborder{
-    height:100vh;
-    background-color: #A9A9A9;
-  }
-  #droptablelayout{
-    background-color: #A9A9A9;
-  }
-
   </style>
+  

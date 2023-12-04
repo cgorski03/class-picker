@@ -24,4 +24,5 @@
   padding: 0.75rem; /* Adjusted padding */
   margin: 0; /* Removed default margin */
 }
+
 </style>

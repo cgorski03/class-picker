@@ -103,91 +103,117 @@ const search = async () => {
 </script>
 
 <style scoped>
+/* Main content area */
 .home {
   overflow: hidden;
   padding: 0;
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: #A9A9A9;
+  background-color: #F5F5F5; /* Updated background color for a cleaner look */
 }
 
+/* Header styling */
 .home h2 {
   text-align: center;
-  font-size: 1.5rem;
-  background-color: #151E3D; /* Blue background color */
+  font-size: 2rem; /* Keep the font size for emphasis */
+  background-color: #151E3D; /* Updated to a more modern navy blue */
   color: white;
-  padding: 1rem; /* Adjusted padding */
-  margin: 0;
+  padding: 1rem;
+  margin-bottom: 20px; /* Add some space below the heading */
 }
 
+/* Side menu styling */
 .menuContent {
-  height: 100%;
+  height: 95%;
   width: 20%;
-  background-color: #b90e0a;
-  border: 2px solid black;
+  background-color: #B90E0A; /* Updated to a softer shade of blue */
+  border-right: 1px solid #000000; /* Light border for separation */
 }
 
+/* Main content styling */
 .mainContent {
   min-height: 100%;
   height: 100%;
   width: 80%;
+  padding: 20px;
 }
 
+/* Flexbox layout for main area */
 main {
   display: flex;
   flex-direction: row;
   height: 100vh;
 }
 
+/* Search bar container */
 .searchbar {
-  background-color: #3A3B3C; /* Light background color */
+  background-color: #FFFFFF; /* Use white for the search bar for a clean look */
   margin: 30px auto;
-  padding: 1rem; /* Adjusted padding */
+  padding: 1rem;
   width: 90%;
   display: flex;
   flex-direction: row;
-  align-items: center; /* Align items vertically */
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+  border-radius: 4px; /* Rounded corners for modern feel */
 }
 
+/* Search input field */
 .searchbar #searchfield {
-  flex-grow: 1; /* Allow the input to grow and fill available space */
-  margin-right: 1rem; /* Added margin */
+  flex-grow: 1;
+  margin-right: 1rem;
 }
 
+/* Search input styling */
 .searchbar input {
   width: 100%;
-  font-size: 1rem; /* Adjusted font size */
-  padding: 0.5rem; /* Adjusted padding */
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #DADFE1; /* Soften the border color */
+  border-radius: 4px; /* Rounded corners for the input field */
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.075); /* Inner shadow for depth */
 }
 
+/* Placeholder text color */
 .searchbar input::placeholder {
-  text-align: center;
-  color: #7f8c8d; /* Light text color */
+  color: #95A5A6; /* Lighten the placeholder text */
 }
 
+/* Hover effect for search input */
 .searchbar input:hover {
-  background-color: #dfe6e9; /* Light background color on hover */
+  background-color: #ECF0F1; /* Slightly lighter background on hover */
+  border-color: #BDC3C7; /* Border color to match hover bg */
 }
 
+/* Search button styling */
 .searchbar button {
   border-radius: 50%;
-  background: url("../assets/images/search.webp") no-repeat scroll 0 0 transparent;
-  background-size: 30px; /* Adjusted background size */
-  color: #000000;
+  background: url("../assets/images/search.webp") no-repeat center center / cover; /* Ensure the icon covers the area */
   cursor: pointer;
-  padding: 0.75rem; /* Adjusted padding */
-  border: 1px solid white; /* Adjusted border color */
+  padding: 0.75rem;
+  border: none; /* Remove border for a cleaner button */
+  width: 48px; /* Define a fixed width */
+  height: 48px; /* Define a fixed height */
+  display: inline-block; /* Use inline-block for proper sizing */
+  outline: none; /* Remove the outline to maintain the style on focus */
 }
 
+/* Hover effect for the search button */
 .searchbar button:hover {
-  background-color: #bdc3c7; /* Light background color on hover */
+  background-color: #BDC3C7; /* Light background color on hover */
+  background-size: 60%; /* Make the icon a bit smaller on hover */
 }
 
+/* Table container */
 #tablediv {
   align-self: center;
   width: 90%;
   overflow: hidden;
   height: 100%;
+  background-color: #FFFFFF; /* White background for the table container */
+  border-radius: 4px; /* Rounded corners for the table container */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Shadow for depth */
 }
 </style>
+
