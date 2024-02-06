@@ -1,6 +1,5 @@
 <template>
-    <div class="loader">
-    </div>
+  <div class="loader"></div>
 </template>
 
 <style>
@@ -16,7 +15,7 @@
   width: 75px;
   height: 75px;
   border: 15px solid #151e3d;
-  border-top-color: #B90E0A;
+  border-top-color: #b90e0a;
   border-radius: 50%;
   animation: loading 0.75s ease infinite;
 }
@@ -29,5 +28,4 @@
     transform: rotate(1turn);
   }
 }
-
 </style>

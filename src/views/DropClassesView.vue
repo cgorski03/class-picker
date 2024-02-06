@@ -1,58 +1,55 @@
 <template>
-    <main>
-      <div class = "menuContent">
-        <MainMenu/>
-      </div>
-  
-      <div class = "mainContent">
-        <div class="home">
-          <div class = "formatText">
-            <h2>Drop Classes</h2>
-          </div>
-          <div id ="tablediv">
-            <DropClassTable/>
-          </div>
+  <main>
+    <div class="menuContent">
+      <MainMenu />
+    </div>
+
+    <div class="mainContent">
+      <div class="home">
+        <div class="formatText">
+          <h2>Drop Classes</h2>
+        </div>
+        <div id="tablediv">
+          <DropClassTable />
         </div>
       </div>
-  
-    </main>
-  </template>
-  
-  <script setup>
-  import MainMenu from "../components/MainMenu.vue";
-  import DropClassTable from "../components/DropClassTable.vue"
-  
-  </script>
-  <style scoped>
-  .home {
-    overflow: hidden;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    background-color: #F5F5F5; /* Updated background color for a cleaner look */
-;
-  }
-  
-  .home h2 {
+    </div>
+  </main>
+</template>
+
+<script setup>
+import MainMenu from "../components/MainMenu.vue";
+import DropClassTable from "../components/DropClassTable.vue";
+</script>
+<style scoped>
+.home {
+  overflow: hidden;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5; /* Updated background color for a cleaner look */
+}
+
+.home h2 {
   text-align: center;
   font-size: 2rem; /* Keep the font size for emphasis */
-  background-color: #151E3D; /* Updated to a more modern navy blue */
+  background-color: #151e3d; /* Updated to a more modern navy blue */
   color: white;
   padding: 1rem;
   margin-bottom: -20px; /* Add some space below the heading */
 }
-  
-  img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .menuContent {
   height: 95%;
   width: 20%;
-  background-color: #B90E0A; /* Updated to a softer shade of blue */
-  border-right: 1px solid #EAEAEA; /* Light border for separation */
+  background-color: #b90e0a; /* Updated to a softer shade of blue */
+  border-right: 1px solid #eaeaea; /* Light border for separation */
 }
 
 /* Main content styling */
@@ -70,7 +67,7 @@ main {
   height: 100vh;
 }
 
-  #tablediv{
+#tablediv {
   margin-top: 20px;
   margin-bottom: 20px;
   align-self: center;
@@ -78,5 +75,4 @@ main {
   overflow: hidden;
   height: auto;
 }
-  
-  </style>
+</style>

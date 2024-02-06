@@ -18,11 +18,10 @@
 .app-header h1 {
   color: #ecf0f1; /* Light text color */
   text-align: center;
-  background-color: #151E3D; /* Blue background color */
+  background-color: #151e3d; /* Blue background color */
   font-size: 2rem; /* Increased font size */
   font-weight: bold;
   padding: 0.75rem; /* Adjusted padding */
   margin: 0; /* Removed default margin */
 }
-
 </style>
