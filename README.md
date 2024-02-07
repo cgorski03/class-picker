@@ -24,3 +24,6 @@ This repository contains the source code for a Class Picking App designed for a 
 
 ## Collaborators
   - This project was developed by Colin Gorski and Joshua Kaplan
+
+# Note
+  - The AWS backend used in the project is deprecated, but the lambda functions are above along  with the Swagger documentation for the API.
