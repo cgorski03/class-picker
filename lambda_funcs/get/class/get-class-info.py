@@ -29,22 +29,24 @@ import json
 import boto3
 import urllib.parse
 
+
 def lambda_handler(event, context):
-    #properly handle input of course name
-    course_name = urllib.parse.unquote(event['queryStringParameters']['course'])
+    # properly handle input of course name
+    course_name = urllib.parse.unquote(
+        event['queryStringParameters']['course'])
     dynamodb = boto3.resource('dynamodb')
     table = dynamodb.Table('CourseTable')
 
-    #prevent cors errors
+    # prevent cors errors
     headers = {
-        "Access-Control-Allow-Origin": "*",  
+        "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Headers": "Content-Type",
         "Access-Control-Allow-Methods": "OPTIONS, POST, GET"
     }
 
     # Use the `get_item` method to retrieve the item
     response = table.get_item(
-        Key={'Title': course_name}  
+        Key={'Title': course_name}
     )
     # Check if the item was found
     if 'Item' in response:
@@ -58,6 +60,5 @@ def lambda_handler(event, context):
         return {
             'statusCode': 404,
             "headers": headers,
-            'body': json.dumps({'message' : 'class not found'})
+            'body': json.dumps({'message': 'class not found'})
         }
-    
